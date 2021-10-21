@@ -17,11 +17,16 @@
   },
   "prettier": {},
   "dependencies": {
-    "frontity": "^1.17.1",
     "@frontity/core": "^1.14.3",
-    "@frontity/wp-source": "^1.11.6",
-    "@frontity/tiny-router": "^1.4.4",
     "@frontity/html2react": "^1.7.0",
-    "@frontity/mars-theme": "./packages/mars-theme"
+    "@frontity/mars-theme": "./packages/mars-theme",
+    "@frontity/tiny-router": "^1.4.4",
+    "@frontity/wp-source": "^1.11.6",
+    "bulma": "^0.9.3",
+    "bulma-carousel": "^4.0.24",
+    "env-theme": "file:packages/env-theme",
+    "frontity": "^1.17.1",
+    "react": "^17.0.2",
+    "react-responsive": "^9.0.0-beta.4"
   }
 }
