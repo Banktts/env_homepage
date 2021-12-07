@@ -6,6 +6,7 @@ import {CustomSwicth, FeaturedMedia, getPostFromCategory, htmlProcessing} from "
 
 const PeopleList = ({state, data, children, libraries}) => {
     const Html2React = libraries.html2react.Component;
+    console.log("state.source in people", state.source)
     return (
         <div>
             {children}
@@ -16,16 +17,12 @@ const PeopleList = ({state, data, children, libraries}) => {
                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
                     const postRender = htmlProcessing({htmlText: post.content.rendered})
                     return (
-                        <div>
-                            <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile "
-                                 key={post.id}>
-                                <CardWithContent src={imgSrc} desc={""} title={post.title.rendered}
-                                                 link={`/people/page/${post.title.rendered}`}/>
 
+                        <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile "
+                             key={post.id}>
+                            <CardWithContent src={imgSrc} desc={""} title={post.title.rendered}
+                                             link={`/people/pages/${item.id}`}/>
 
-                            </div>
-                            <Html2React
-                                html={postRender}/>
 
                         </div>
 

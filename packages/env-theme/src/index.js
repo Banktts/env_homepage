@@ -32,11 +32,11 @@ export default {
                     }
                 },
                 {
-                    pattern: "/people/page/:name",
+                    pattern: "/people/pages/:id",
                     func: ({state, link, params}) => {
                         state.source.data[link] = {
-                            isPeople: true,
-                            name: params.name
+                            isPost: true,
+                            id: params.id
                         }
                     }
                 }
