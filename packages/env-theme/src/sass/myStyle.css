@@ -10303,8 +10303,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .footer {
-  background-color: #fafafa;
+  background-color: #7d2514;
   padding: 3rem 1.5rem 6rem;
+  color: true;
 }
 
 /*# sourceMappingURL=myStyle.css.map */

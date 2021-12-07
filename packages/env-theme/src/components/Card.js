@@ -1,61 +1,69 @@
-import {styled} from "frontity";
-import {FullImageView} from "./image";
+import { styled } from "frontity";
+import { FullImageView } from "./image";
+import Link from "@frontity/components/link";
 
-
-export const CardTextOnImage = ({desc, src}) => {
-    return (
+export const CardTextOnImage = ({ desc, src, link }) => {
+  return (
+    <CardEffect>
+      <Link link={link}>
         <Card className="card ">
-            <div className="card-image">
-                <TextOnImage>{desc}</TextOnImage>
-                <FullImageView src={src} alt={desc}/>
-            </div>
+          <div className="card-image">
+            <TextOnImage>{desc}</TextOnImage>
+            <FullImageView src={src} alt={desc} />
+          </div>
         </Card>
-    )
+      </Link>
+    </CardEffect>
+
+  )
 
 }
 
-export const CardWithContent = ({desc, src}) => {
-    return (
-        <CardWithContentContainer className="card">
-            <div className="card-image">
-                <ImageContent className="image is-fullwidth" src={src}
-                     alt={desc}/>
+export const CardWithContent = ({ desc, src, title, link }) => {
+  return (
+    <CardEffect>
+      <Link link={link}>
+        <div class="card is-shadowless is-centered">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img className="imageis-4by3" src={src} alt={desc} />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content ">
+                <p class="title is-4 ">{title}</p>
+              </div>
             </div>
-            <CardContent className="card-content">
-                <div className="content">
-                    {desc}
-                </div>
-            </CardContent>
-        </CardWithContentContainer>
-    )
+
+            <div class="content">
+              {desc}
+            </div>
+          </div>
+
+        </div>
+      </Link>
+    </CardEffect>
+
+  )
 }
 
 
 const Card = styled.div`
   height: 274px;
-  max-width: 220px;
   position: relative;
   overflow: hidden;
-  :hover{
-    transform: scale(1.1);
-    transition-duration: 0.5s;
-  }
+  
 `
 
-const CardContent = styled.div`
-  min-height: 120px;
+const CardEffect = styled.div`
+:hover{
+  transform: scale(1.01);
+  transition-duration: 0.5s;
+}
 `
 
-const ImageContent = styled.img`
-  height: 300px;
-`
 
-const CardWithContentContainer = styled(Card)`
-  max-width: 450px;
-  height: 450px;
-  margin-left: auto;
-  margin-right: auto; 
-`
 
 const TextOnImage = styled.h1`
   position: absolute;
