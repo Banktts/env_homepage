@@ -1,10 +1,9 @@
-import {useEffect} from "react";
 import Switch from "@frontity/components/switch";
 import {htmlProcessing} from "./htmlProcessing";
+import Post from "../components/Post";
 
 export const getPostFromCategory = ({state, actions, params}) => {
-    const dataCat = state.source.get(`/category/${params}`)
-    return dataCat
+    return state.source.get(`/category/${params}`)
 }
 
 
@@ -16,12 +15,13 @@ export const FeaturedMedia = ({state, id}) => {
     );
 };
 
-export const CustomSwicth = ({children,data}) => {
-    return(
+export const CustomSwicth = ({children, data}) => {
+    return (
         <Switch>
             {children}
-            <div when={data.isFetching} />
-            <div when={data.isError} />
+            <div when={data.isFetching}/>
+            <div when={data.isError}/>
+            <Post when={data.isPost}/>
         </Switch>
     )
 }
