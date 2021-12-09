@@ -27,12 +27,13 @@
     "env-theme": "file:packages/env-theme",
     "frontity": "^1.14.1",
     "react": "latest",
+    "react-dom": "^17.0.2",
     "react-responsive": "^9.0.0-beta.4"
   },
   "devDependencies": {
     "@frontity/components": "latest"
   },
   "resolutions": {
-    "@frontity/core/webpack/watchpack" : "^2.3.1"
+    "@frontity/core/webpack/watchpack": "^2.3.1"
   }
 }
