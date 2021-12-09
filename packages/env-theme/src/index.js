@@ -15,7 +15,7 @@ export default {
     actions: {
         envTheme: {
             beforeSSR: async ({ state, actions }) =>{
-                await actions.source.fetch(`/category/people/faculty-members`)
+                await actions.source.fetch(`/category/faculty-members`)
             }
 
         }
@@ -23,16 +23,16 @@ export default {
         source: {
             handlers: [
                 {
-                    pattern: "/people/:path",
-                    func: ({state, link, params}) => {
+                    pattern: "/faculty-members",
+                    func: ({state, link}) => {
                         state.source.data[link] = {
                             isPeople: true,
-                            path: params.path
+                            path: "faculty-members"
                         }
                     }
                 },
                 {
-                    pattern: "/people/pages/:id",
+                    pattern: "/faculty-members/:id",
                     func: ({state, link, params}) => {
                         state.source.data[link] = {
                             isPost: true,

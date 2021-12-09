@@ -6,7 +6,7 @@ import Nav from "./components/Nav";
 import Home from './pages/home'
 import Footer from "./components/Footer";
 import People from "./pages/people";
-
+import Source from "@fortawesome/fontawesome-free/js/all"
 const Root = ({state, actions}) => {
 
     const data = state.source.get(state.router.link)
@@ -14,6 +14,7 @@ const Root = ({state, actions}) => {
     return (
         <div style={{minHeight: "100vh",display:"flex",flexDirection:"column"}}>
             <Global styles={bulmaStyle}/>
+            <script defer src={Source}></script>
             <section className="hero is-danger">
                 <Nav/>
             </section>

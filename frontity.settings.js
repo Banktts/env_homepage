@@ -21,7 +21,7 @@ const settings = {
                             "People",
                             [[
                                 "Faculty Members",
-                                "/people/faculty-members"
+                                "/faculty-members"
                             ],
                                 [
                                     "Laboratory Staffs",
