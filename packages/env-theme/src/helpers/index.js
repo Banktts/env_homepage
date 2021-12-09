@@ -1,5 +1,5 @@
 import Switch from "@frontity/components/switch";
-import {htmlProcessing} from "./htmlProcessing";
+import {HtmlProcessing} from "./htmlProcessing";
 import Post from "../components/Post";
 
 export const getPostFromCategory = ({state, actions, params}) => {
@@ -26,4 +26,14 @@ export const CustomSwicth = ({children, data}) => {
     )
 }
 
-export {htmlProcessing}
+export const splitArray = (array, part) => {
+    const tmp = [];
+    for(let i = 0; i < array.length; i += part) {
+        console.log("array splice:",array.slice(i, i + part))
+        tmp.push(array.slice(i, i + part));
+    }
+    console.log("array return:",tmp)
+    return tmp;
+}
+
+
