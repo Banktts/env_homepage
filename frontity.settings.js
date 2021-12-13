@@ -25,17 +25,29 @@ const settings = {
                             ],
                                 [
                                     "Laboratory Staffs",
-                                    "/people/laboratory_staffs/"
+                                    "/laboratory_staffs"
                                 ],
                                 [
                                     "Administrative Staffs",
-                                    "/people/administrative_staffs/"
+                                    "/administrative_staffs"
                                 ]
                             ]
                         ],
                         [
-                            "Travel",
-                            "/category/travel/"
+                            "Student",
+                            [[
+                                "Senior project form",
+                                "/senior_project_form"
+                            ],
+                                [
+                                    "Internship_form",
+                                    "/internship_form"
+                                ],
+                                [
+                                    "Thesis form",
+                                    "/thesis_form"
+                                ]
+                            ]
                         ],
                         [
                             "Japan",

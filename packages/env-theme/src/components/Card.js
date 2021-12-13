@@ -32,7 +32,7 @@ export const CardWithContent = ({ desc, src, title, link }) => {
           <div class="card-content">
             <div class="media">
               <div class="media-content ">
-                <p class="title is-4 ">{title}</p>
+                <p class="title is-6 has-text-black ">{title}</p>
               </div>
             </div>
 

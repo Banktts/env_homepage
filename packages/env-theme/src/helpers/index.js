@@ -1,6 +1,6 @@
 import Switch from "@frontity/components/switch";
 import {HtmlProcessing} from "./htmlProcessing";
-import Post from "../components/Post";
+import {PageAndPost} from "../components";
 
 export const getPostFromCategory = ({state, actions, params}) => {
     return state.source.get(`/category/${params}`)
@@ -21,7 +21,7 @@ export const CustomSwicth = ({children, data}) => {
             {children}
             <div when={data.isFetching}/>
             <div when={data.isError}/>
-            <Post when={data.isPost}/>
+            <PageAndPost when={data.isPost || data.isPage}/>
         </Switch>
     )
 }
