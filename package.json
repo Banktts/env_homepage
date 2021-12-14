@@ -26,6 +26,8 @@
     "bulma": "latest",
     "env-theme": "file:packages/env-theme",
     "frontity": "^1.14.1",
+    "html-react-parser": "^1.4.2",
+    "html-to-react": "^1.4.7",
     "react": "latest",
     "react-dom": "^17.0.2",
     "react-responsive": "^9.0.0-beta.4"

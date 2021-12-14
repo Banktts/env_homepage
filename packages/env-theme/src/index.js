@@ -2,6 +2,7 @@ import Root from "./Root";
 import link from "@frontity/html2react/processors/link";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
+import {post} from "@frontity/wp-source/src/libraries/handlers/index";
 
 
 export default {
@@ -16,6 +17,7 @@ export default {
         envTheme: {
             beforeSSR: async ({ state, actions }) =>{
                 await actions.source.fetch(`/category/faculty-members`)
+                await actions.source.fetch(`/senior_project_form`)
             }
 
         }
@@ -36,6 +38,7 @@ export default {
                     func: ({state, link, params}) => {
                         state.source.data[link] = {
                             isPost: true,
+                            type: "post",
                             id: params.id
                         }
                     }
