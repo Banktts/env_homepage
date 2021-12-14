@@ -6,6 +6,13 @@ import Nav from "./Nav";
 import PageAndPost from "./PageAndPost"
 import Grid from "./Grid";
 import {View} from "./View";
+import {DownloadFile,Address,Mail,Tel,Fax,Resume} from "./Icon";
+
+
+const Icon = {
+    DownloadFile,Address,Mail,Tel,Fax,Resume
+}
+
 export {
-    CardWithContent,CardTextOnImage,CarouselCard,Footer,FullImageView,Nav,PageAndPost,View,Grid
+    CardWithContent,CardTextOnImage,CarouselCard,Footer,FullImageView,Nav,PageAndPost,View,Grid,Icon
 }

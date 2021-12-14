@@ -1,75 +1,8 @@
 import {useState} from "react";
 import {connect} from "frontity";
-import {splitArray} from "./index";
+import {download, splitArray} from "./index";
 import parse, {domToReact} from 'html-react-parser';
-
-
-const Icon = ({icon, content}) => {
-    return (
-        <div>
-            <br/>
-            <span className="icon-text">
-                <span className="icon">
-                    {icon}
-                </span>
-                <div className="is-flex-direction-row">
-                    {content}
-                </div>
-            </span>
-            <br/>
-        </div>
-    )
-}
-
-const Address = ({content}) => {
-    return (
-        <Icon
-            icon={<i className="fas fa-address-book"></i>}
-            content={content}
-
-        />
-    )
-}
-
-const Mail = ({content}) => {
-    return (
-        <Icon
-            icon={<i className="far fa-envelope"></i>}
-            content={content}
-
-        />
-    )
-}
-
-const Tel = ({content}) => {
-    return (
-        <Icon
-            icon={<i className="fas fa-phone-alt"></i>}
-            content={content}
-
-        />
-    )
-}
-
-const Fax = ({content}) => {
-    return (
-        <Icon
-            icon={<i className="fas fa-fax"></i>}
-            content={content}
-
-        />
-    )
-}
-
-const Resume = ({content}) => {
-    return (
-        <Icon
-            icon={<i className="far fa-id-badge"></i>}
-            content={content}
-
-        />
-    )
-}
+import {Icon} from "../components";
 
 
 const Publication = ({val}) => {
@@ -115,7 +48,6 @@ const Publication = ({val}) => {
 
 const options = {
     replace: domNode => {
-        console.log("domNode:",domNode)
         switch (true) {
             case domNode.attribs?.class?.includes("wp-block-columns") === true:
                 return (
@@ -157,31 +89,47 @@ const options = {
 
             case domNode.attribs?.id?.includes("wp-block-file--media") === true:
                 return(
-                    <div className="is-flex-direction-column">
-                        <h2 className="title is-2">{domNode.children[0].data}</h2>
-                        <p>{domNode.attribs.href}</p>
+                    <div>
+                        <div className="level is-mobile">
+                            <div className="level-left">
+                                <div className="level-item">
+                                    <Icon.DownloadFile content={<h5 className="title is-5">{domNode.children[0].data}</h5>}/>
+                                </div>
+
+
+                            </div>
+                            <div className="level-right">
+                                <div className="level-item">
+                                    <button className="button is-danger is-rounded" onClick={()=>download({URL:domNode.attribs.href,name:domNode.children[0].data})} >Download</button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr/>
                     </div>
+
+
                 )
 
             case domNode.attribs?.class?.includes("is-address") === true:
                 return (
-                    <Address content={domToReact(domNode.children)}/>
+                    <Icon.Address content={domToReact(domNode.children)}/>
                 )
             case domNode.attribs?.class?.includes("is-mail") === true:
                 return (
-                    <Mail content={domToReact(domNode.children)}/>
+                    <Icon.Mail content={domToReact(domNode.children)}/>
                 )
             case domNode.attribs?.class?.includes("is-tel") === true:
                 return (
-                    <Tel content={domToReact(domNode.children)}/>
+                    <Icon.Tel content={domToReact(domNode.children)}/>
                 )
             case domNode.attribs?.class?.includes("is-fax") === true:
                 return (
-                    <Fax content={domToReact(domNode.children)}/>
+                    <Icon.Fax content={domToReact(domNode.children)}/>
                 )
             case domNode.attribs?.class?.includes("is-resume") === true:
                 return (
-                    <Resume content={domToReact(domNode.children)}/>
+                    <Icon.Resume content={domToReact(domNode.children)}/>
                 )
 
 

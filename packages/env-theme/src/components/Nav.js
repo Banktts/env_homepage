@@ -7,14 +7,14 @@ const DropDown = ({ name, link }) => {
     console.log("link", link)
     return (
         <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-item" key={name} >
+            <p className="navbar-item" key={name} >
                 {name}
-            </a>
+            </p>
 
             <div className="navbar-dropdown" >
                 {link.map(([name, link]) => {
                     return (
-                        <Link link={link} className="navbar-item has-text-black" key={name} >
+                        <Link link={link} className="navbar-item has-text-black" key={`navbar-dropdown-item-${name}`} >
                             {name}
                         </Link>
                     );
@@ -27,7 +27,7 @@ const DropDown = ({ name, link }) => {
 const NavItem = ({ name, link }) => {
     if (!Array.isArray(link)) {
         return (
-            <Link link={link} className="navbar-item" key={name} >
+            <Link link={link} className="navbar-item" key={`navbar-item-${name}`} >
                 {name}
             </Link>
         )
@@ -69,7 +69,7 @@ const Nav = ({ state }) => {
 
                         {state.theme.menu.map(([name, link]) => {
                             return (
-                                <NavItem name={name} link={link} />
+                                <NavItem key={`navbar-list-${name}`} name={name} link={link} />
 
                             );
                         })}

@@ -23,20 +23,20 @@ export const CardWithContent = ({ desc, src, title, link }) => {
   return (
     <CardEffect>
       <Link link={link}>
-        <div class="card is-shadowless is-centered">
-          <div class="card-image">
-            <figure class="image is-4by3">
+        <div className="card is-shadowless is-centered">
+          <div className="card-image">
+            <figure className="image is-4by3">
               <img className="imageis-4by3" src={src} alt={desc} />
             </figure>
           </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content ">
-                <p class="title is-6 has-text-black ">{title}</p>
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content ">
+                <p className="title is-6 has-text-black ">{title}</p>
               </div>
             </div>
 
-            <div class="content">
+            <div className="content">
               {desc}
             </div>
           </div>

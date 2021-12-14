@@ -7,19 +7,17 @@ import {Icon} from "../static/icon";
 const FooterMenuList = ({name, link}) => {
     console.log("link", link)
     return (
-
-
         <aside className="column is-one-third menu">
-            <p className="menu-label has-text-white" key={name}>
+            <p className="menu-label has-text-white" key={`footer-header-dropdown-${name}`}>
                 {name}
             </p>
             <ul className="menu-list">
 
                 {link.map(([name, link]) => {
                     return (
-                        <li >
-                            <Link link={link} key={name}>
-                                <a className="has-text-white is-spaced">{name}</a>
+                        <li key={`footer-dropdown-item-${name}`} >
+                            <Link link={link} >
+                                <p className="has-text-white is-spaced">{name}</p>
                             </Link>
                         </li>
 
@@ -42,7 +40,7 @@ const FooterItem = ({name, link}) => {
             return (
                 <aside className="column is-one-third menu">
                     <Link link={link}>
-                        <p className="menu-label has-text-white" key={name}>
+                        <p className="menu-label has-text-white">
                             {name}
                         </p>
                     </Link>
@@ -91,7 +89,7 @@ const Footer = ({state}) => {
                         {state.theme.menu.map(([name, link]) => {
 
                             return (
-                                <FooterItem name={name} link={link}/>
+                                <FooterItem key={`footer-item-${name}`} name={name} link={link}/>
 
                             );
                         })}

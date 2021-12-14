@@ -7,6 +7,12 @@ export const getPostFromCategory = ({state, actions, params}) => {
 }
 
 
+export const download = ({URL,name}) => {
+    if(window !== undefined){
+        window.location.href=URL
+    }
+
+}
 export const FeaturedMedia = ({state, id}) => {
     const media = state.source.attachment[id];
     if (!media) return null;
