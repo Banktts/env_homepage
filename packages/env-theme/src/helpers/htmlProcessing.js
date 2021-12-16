@@ -24,16 +24,16 @@ const Publication = ({val}) => {
                 <ul>
                     {PageKey.map((element, i) => {
                         return (
-                            <li className={i === page ? "is-active" : ""} onClick={() => handlePage({key: i})}>
+                            <li key={`tab-publication-${i}`} className={i === page ? "is-active" : ""} onClick={() => handlePage({key: i})}>
                                 <a>{element}</a>
                             </li>
                         )
                     })}
                 </ul>
             </div>
-            {content.map((val) => {
+            {content.map((val,i) => {
                 return (
-                    <div>
+                    <div key={`publication-content-${i}`}>
                         {domToReact(val.children, options)}
                         <hr/>
                     </div>
@@ -52,6 +52,7 @@ const options = {
             case domNode.attribs?.class?.includes("wp-block-columns") === true:
                 return (
                     <div className="columns is-multiline is-mobile ">
+                        <br/>
                         {domToReact(domNode.children, options)}
                     </div>
                 )
@@ -82,7 +83,7 @@ const options = {
                     </div>
                 )
             case  /h[1-6]/g.test(domNode?.name) :
-                domNode.attribs.class = `title is-${domNode.name[1]}`
+                domNode.attribs.class = `title is-${domNode.name[1]} has-text-black`
                 break;
             case domNode.attribs?.class?.includes("is-publication-table") === true :
                 return (<Publication val={domNode?.children[0]?.children[0]?.children}/>)
@@ -90,7 +91,7 @@ const options = {
             case domNode.attribs?.id?.includes("wp-block-file--media") === true:
                 return(
                     <div>
-                        <div className="level is-mobile">
+                        <div className="level ">
                             <div className="level-left">
                                 <div className="level-item">
                                     <Icon.DownloadFile content={<h5 className="title is-5">{domNode.children[0].data}</h5>}/>

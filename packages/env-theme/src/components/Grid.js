@@ -8,20 +8,19 @@ const Grid = ({state,data,children}) =>{
     return (
         <div>
             {children}
-            <nav className="columns container is-fluid is-multiline is-mobile ">
+            <div className="columns is-centered is-multiline">
                 {data.items.map((item) => {
                     const post = state.source[item.type][item.id]
-                    console.log(post)
                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
                     return (
-                        <div className="column is-one-third-desktop is-one-third-tablet is-half-mobile "
+                        <div style={{margin:"auto"}} className="column is-one-third-desktop is-half-tablet is-four-fifths-mobile is-narrow"
                              key={post.id}>
-                            <CardWithContent src={imgSrc} desc={""} title={post.title.rendered}
+                            <CardWithContent  src={imgSrc} desc={""} title={post.title.rendered}
                                              link={`${state.router.link}${item.id}`}/>
                         </div>
                     )
                 })}
-            </nav>
+            </div>
         </div>
 
     )

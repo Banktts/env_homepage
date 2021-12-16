@@ -1,8 +1,13 @@
 import Switch from "@frontity/components/switch";
 import {HtmlProcessing} from "./htmlProcessing";
-import {PageAndPost} from "../components";
+import {Category, PageAndPost} from "../components";
+import dateFormat from "dateformat";
+import { useEffect } from "react";
 
 export const getPostFromCategory = ({state, actions, params}) => {
+    useEffect(()=>{
+        actions.source.fetch(`/category/${params}`)
+    },[])
     return state.source.get(`/category/${params}`)
 }
 
@@ -25,9 +30,11 @@ export const CustomSwicth = ({children, data}) => {
     return (
         <Switch>
             {children}
+            <PageAndPost when={data.isPost || data.isPage}/>
+            <Category when={data.isCategory}/>
             <div when={data.isFetching}/>
             <div when={data.isError}/>
-            <PageAndPost when={data.isPost || data.isPage}/>
+
         </Switch>
     )
 }
@@ -41,5 +48,14 @@ export const splitArray = (array, part) => {
     console.log("array return:",tmp)
     return tmp;
 }
+
+export const dateTranslate = (date) =>{
+    if (date !== undefined){
+        return dateFormat(date,"dddd, mmmm dS, yyyy")
+    }
+
+}
+
+
 
 

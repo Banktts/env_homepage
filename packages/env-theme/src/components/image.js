@@ -8,6 +8,14 @@ export const FullImageView = ({src, alt}) => {
 
 }
 
+export const Image3by2 = ({src, alt}) => {
+    return (
+        <RoundImage className="image is-3by2">
+            <img className="has-ratio" src={src} alt={alt}/>
+        </RoundImage>
+    )
+}
+
 const FullImage = styled.img`
   object-fit: fill;
   height: 274px;
@@ -15,4 +23,9 @@ const FullImage = styled.img`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+`
+
+const RoundImage = styled.figure`
+  border-radius: 16px;
+  overflow: hidden;
 `

@@ -61,6 +61,18 @@ const settings = {
                     "featured": {
                         "showOnList": false,
                         "showOnPost": false
+                    },
+                    "breakPoint":{
+                        "isDesktop":{
+                            "minWidth":1024
+                        },
+                        "isTablet":{
+                            "minWidth":769,
+                            "maxWidth":1023
+                        },
+                        "isMobile":{
+                            "maxWidth":768
+                        }
                     }
                 },
 

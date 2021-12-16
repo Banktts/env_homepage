@@ -16,7 +16,10 @@ export default {
     actions: {
         envTheme: {
             beforeSSR: async ({ state, actions }) =>{
+          
+                await actions.source.fetch(`/category/events/`)
                 await actions.source.fetch(`/category/faculty-members`)
+                
                 await actions.source.fetch(`/senior_project_form`)
             }
 
@@ -37,9 +40,20 @@ export default {
                     pattern: "/faculty-members/:id",
                     func: ({state, link, params}) => {
                         state.source.data[link] = {
-                            isPost: true,
+                            isPage: true,
                             type: "post",
                             id: params.id
+                        }
+                    }
+                },
+                {
+                    pattern: "/post/*",
+                    func: ({state, link, params}) => {
+                        console.log(params.params)
+                        state.source.data[link] = {
+                            isPost: true,
+                            type: "post",
+                            id: params.params
                         }
                     }
                 }

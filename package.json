@@ -24,13 +24,16 @@
     "@frontity/tiny-router": "^1.3.2",
     "@frontity/wp-source": "^1.11.1",
     "bulma": "latest",
+    "dateformat": "^5.0.2",
     "env-theme": "file:packages/env-theme",
     "frontity": "^1.14.1",
     "html-react-parser": "^1.4.2",
     "html-to-react": "^1.4.7",
     "react": "latest",
     "react-dom": "^17.0.2",
-    "react-responsive": "^9.0.0-beta.4"
+    "react-responsive": "^9.0.0-beta.4",
+    "react-swipeable": "^6.2.0",
+    "react-swipeable-views": "^0.14.0"
   },
   "devDependencies": {
     "@frontity/components": "latest"

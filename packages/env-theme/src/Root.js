@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect,Global} from "frontity";
 import {CustomSwicth} from "./helpers";
 import bulmaStyle from './sass/myStyle.css';
@@ -7,12 +7,15 @@ import Home from './pages/home'
 import Footer from "./components/Footer";
 import People from "./pages/people";
 import Source from "@fortawesome/fontawesome-free/js/all"
+import {BackgroundView} from "./components";
 const Root = ({state, actions}) => {
 
     const data = state.source.get(state.router.link)
     console.log("data: ",data)
     return (
-        <div style={{minHeight: "100vh",display:"flex",flexDirection:"column"}}>
+        <BackgroundView >
+
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <Global styles={bulmaStyle}/>
             <script defer src={Source}></script>
             <section className="hero is-danger">
@@ -23,11 +26,13 @@ const Root = ({state, actions}) => {
                 <Home when={data.isHome}/>
                 <People when={data.isPeople}/>
             </CustomSwicth>
+            <div style={{alignContent:"flex-end"}}>
+                <Footer/>
+            </div>
 
-            <Footer/>
 
 
-        </div>
+        </BackgroundView>
     );
 };
 

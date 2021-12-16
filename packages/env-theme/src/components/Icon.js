@@ -1,7 +1,6 @@
 const Icon = ({icon, content}) => {
     return (
         <div>
-            <br/>
             <span className="icon-text">
                 <span className="icon" style={{marginRight:"20px"}}>
                     {icon}
@@ -11,7 +10,7 @@ const Icon = ({icon, content}) => {
                     {content}
                 </div>
             </span>
-            <br/>
+
         </div>
     )
 }
