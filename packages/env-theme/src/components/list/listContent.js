@@ -5,7 +5,6 @@ import {Image3by2} from "../image";
 import {Text} from "../index";
 
 export const ListContent = ({image, title, link, date, content}) => {
-    console.log("[listContent]:", image)
     return image !== null && image !== undefined ? (
         <Link link={link}>
             <Container>

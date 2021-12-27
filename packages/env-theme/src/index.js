@@ -18,9 +18,8 @@ export default {
             beforeSSR: async ({ state, actions }) =>{
           
                 await actions.source.fetch(`/category/events/`)
-                await actions.source.fetch(`/category/faculty-members`)
-                
-                await actions.source.fetch(`/senior_project_form`)
+
+
             }
 
         }
@@ -49,7 +48,6 @@ export default {
                 {
                     pattern: "/post/*",
                     func: ({state, link, params}) => {
-                        console.log(params.params)
                         state.source.data[link] = {
                             isPost: true,
                             type: "post",

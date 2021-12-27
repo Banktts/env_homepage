@@ -11,7 +11,6 @@ import {BackgroundView} from "./components";
 const Root = ({state, actions}) => {
 
     const data = state.source.get(state.router.link)
-    console.log("data: ",data)
     return (
         <BackgroundView >
 

@@ -7,8 +7,6 @@ const PageAndPost = ({state, actions}) => {
 
     const data = state.source.get(state.router.link)
     const rawData = state.source[data.type][data.id]
-    console.log("Raw data:",rawData)
-    console.log("data:",data)
 
     switch(true){
         case data.isPage :
@@ -24,7 +22,6 @@ const PageAndPost = ({state, actions}) => {
         case data.isPost:
             const catName = state.source.category[rawData.categories].name
             const bannerImgSrc = FeaturedMedia({state: state, id: rawData.featured_media})
-            console.log("Category:",state.source.category[rawData.categories].name)
             return (
                 <ViewContent>
                     <div>

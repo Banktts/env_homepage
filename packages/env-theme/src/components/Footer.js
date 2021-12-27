@@ -5,7 +5,6 @@ import {Icon} from "../static/icon";
 
 
 const FooterMenuList = ({name, link}) => {
-    console.log("link", link)
     return (
         <aside className="column is-one-third-desktop is-one-third-tablet is-half-mobile menu">
             <p className="menu-label has-text-white" key={`footer-header-dropdown-${name}`}>

@@ -8,12 +8,9 @@ import Link from "@frontity/components/link/index";
 
 const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, responsiveConfig}) => {
     let data = rawData?.items.slice(0,number)
-    console.log("Show data [CarouselCard in Carousel.js]:", rawData)
-    console.log("Show items [CarouselCard in Carousel.js]:", data?.length)
     const [content, setContent] = useState(splitArray(data, responsiveConfig.isDesktop))
     const [numberOfDot, setNumberOfDot] = useState(Math.ceil(data?.length / responsiveConfig.isDesktop))
     const [index, setIndex] = useState(0)
-    console.log("Show numberOfDot [CarouselCard in Carousel.js]:", Math.ceil(data?.length / responsiveConfig.isDesktop))
     const isDesktop = useMediaQuery(
         {minDeviceWidth: state.theme.breakPoint.isDesktop.minWidth}
     )
@@ -70,7 +67,6 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
                                     const post = state.source[item.type][item.id]
                                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
                                     const date = dateTranslate(post.date)
-                                    console.log("[Carousel] post:",post)
                                     return (
 
                                         <div key={`event-post-${post.id}`} className={bulmaStyle}>

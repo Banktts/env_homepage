@@ -6,14 +6,12 @@ import { dateTranslate } from "../../helpers";
 
 
 const List = ({state,data,children}) =>{
-    console.log("[index << list]:",data)
     return (
         <div>
             {children}
             <div >
                 {data.items.map((item) => {
                     const post = state.source[item.type][item.id]
-                    console.log("[index << list] post:",post)
                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
                     const date = dateTranslate(post.date)
                     return (

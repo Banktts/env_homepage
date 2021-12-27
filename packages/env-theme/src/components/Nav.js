@@ -4,7 +4,6 @@ import Link from "@frontity/components/link";
 
 
 const DropDown = ({ name, link }) => {
-    console.log("link", link)
     return (
         <div className="navbar-item has-dropdown is-hoverable">
             <p className="navbar-item" key={name} >
@@ -41,7 +40,6 @@ const NavItem = ({ name, link }) => {
 }
 
 const Nav = ({ state }) => {
-    console.log("Nav", state.router.link)
     const [burgerBar, setBurgerBar] = useState("")
     const handleBurger = () => {
         if (burgerBar == "") {

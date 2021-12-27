@@ -8,7 +8,6 @@ import List from "./list";
 
 const Category = ({state, actions}) => {
     const CatData = state.source.get(state.router.link)
-    console.log("[Category]",CatData)
     return (
         <View>
             <CustomSwicth data={CatData}>

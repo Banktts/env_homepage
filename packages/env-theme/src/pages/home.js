@@ -10,7 +10,6 @@ import {getPostFromCategory} from "../helpers";
 const Home = ({state, actions}) => {
     const EventsData = getPostFromCategory({state: state, actions: actions, params: `events`})
     const itemEventsData = EventsData?.items
-    console.log("Events Data:",EventsData,itemEventsData)
     return (
         <>
             <div>

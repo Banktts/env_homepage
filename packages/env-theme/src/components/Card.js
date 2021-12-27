@@ -21,7 +21,6 @@ export const CardTextOnImage = ({ desc, src, link }) => {
 }
 
 export const CardWithContent = ({ src, title, link, date, content }) => {
-    console.log("Image [CardWithContnet]", src, title, content)
 
     return src !== null ? (
         <CardEffect>
