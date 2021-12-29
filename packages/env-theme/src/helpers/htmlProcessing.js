@@ -24,14 +24,15 @@ const Publication = ({val}) => {
                 <ul>
                     {PageKey.map((element, i) => {
                         return (
-                            <li key={`tab-publication-${i}`} className={i === page ? "is-active" : ""} onClick={() => handlePage({key: i})}>
+                            <li key={`tab-publication-${i}`} className={i === page ? "is-active" : ""}
+                                onClick={() => handlePage({key: i})}>
                                 <a>{element}</a>
                             </li>
                         )
                     })}
                 </ul>
             </div>
-            {content.map((val,i) => {
+            {content.map((val, i) => {
                 return (
                     <div key={`publication-content-${i}`}>
                         {domToReact(val.children, options)}
@@ -46,100 +47,105 @@ const Publication = ({val}) => {
 }
 
 
-const options = {
-    replace: domNode => {
-        switch (true) {
-            case domNode.attribs?.class?.includes("wp-block-columns") === true:
-                return (
-                    <div className="columns is-multiline is-mobile ">
-                        <br/>
-                        {domToReact(domNode.children, options)}
-                    </div>
-                )
-            case domNode.attribs?.class?.includes("wp-block-media-text alignwide is-stacked-on-mobile") === true:
-                return (
-                    <div className="columns is-desktop">
-                        {domToReact(domNode.children, options)}
-                    </div>
-                )
-            case domNode.attribs?.class?.includes("wp-block-media-text__media") === true:
-                return (
-                    <div className="column">
-                        <figure className="image is-square">
+const HtmlProcessing = ({htmlText, filter}) => {
+
+
+    const options = {
+        replace: domNode => {
+            console.log("domNode:", domNode)
+            switch (true) {
+                case domNode.attribs?.class?.includes("wp-block-columns") === true:
+                    return (
+                        <div className="columns is-multiline is-mobile ">
+                            <br/>
                             {domToReact(domNode.children, options)}
-                        </figure>
-                    </div>
-                )
-            case domNode.attribs?.class?.includes("wp-block-media-text__content") === true:
-                return (
-                    <div className="column">
-                        {domToReact(domNode.children, options)}
-                    </div>
-                )
-            case domNode.attribs?.class?.includes("wp-block-column") === true:
-                return (
-                    <div className="column">
-                        {domToReact(domNode.children, options)}
-                    </div>
-                )
-            case  /h[1-6]/g.test(domNode?.name) :
-                domNode.attribs.class = `title is-${domNode.name[1]} has-text-black`
-                break;
-            case domNode.attribs?.class?.includes("is-publication-table") === true :
-                return (<Publication val={domNode?.children[0]?.children[0]?.children}/>)
-
-            case domNode.attribs?.id?.includes("wp-block-file--media") === true:
-                return(
-                    <div>
-                        <div className="level ">
-                            <div className="level-left">
-                                <div className="level-item">
-                                    <Icon.DownloadFile content={<h5 className="title is-5">{domNode.children[0].data}</h5>}/>
-                                </div>
-
-
-                            </div>
-                            <div className="level-right">
-                                <div className="level-item">
-                                    <button className="button is-danger is-rounded" onClick={()=>download({URL:domNode.attribs.href,name:domNode.children[0].data})} >Download</button>
-                                </div>
-
-                            </div>
                         </div>
-                        <hr/>
-                    </div>
+                    )
+                case domNode.attribs?.class?.includes("wp-block-media-text alignwide is-stacked-on-mobile") === true:
+                    return (
+                        <div className="columns is-desktop">
+                            {domToReact(domNode.children, options)}
+                        </div>
+                    )
+                case domNode.attribs?.class?.includes("wp-block-media-text__media") === true:
+                    return (
+                        <div className="column">
+                            <figure className="image is-square">
+                                {domToReact(domNode.children, options)}
+                            </figure>
+                        </div>
+                    )
+                case domNode.attribs?.class?.includes("wp-block-media-text__content") === true:
+                    return (
+                        <div className="column">
+                            {domToReact(domNode.children, options)}
+                        </div>
+                    )
+                case domNode.attribs?.class?.includes("wp-block-column") === true:
+                    return (
+                        <div className="column">
+                            {domToReact(domNode.children, options)}
+                        </div>
+                    )
+                case  /h[1-6]/g.test(domNode?.name) :
+                    domNode.attribs.class = `title is-${domNode.name[1]} has-text-black`
+                    break;
+                case domNode.attribs?.class?.includes("is-publication-table") === true :
+                    return (<Publication val={domNode?.children[0]?.children[0]?.children}/>)
+
+                case domNode.attribs?.class?.includes("wp-block-file") === true:
+                    return filter?.file === undefined  || domNode.children[0].children[0]?.data.toLowerCase().includes(filter.file.toLowerCase()) ? (
+                            <div className="columns is-gapless is-narrow" id={`file-${domNode.children[0].children[0]?.data}`}>
+
+                                    <div className="column is-10">
+                                        <Icon.DownloadFile content={<h6
+                                            className="title is-6" >{domNode.children[0].children[0]?.data}</h6>}/>
+                                    </div>
 
 
-                )
-
-            case domNode.attribs?.class?.includes("is-address") === true:
-                return (
-                    <Icon.Address content={domToReact(domNode.children)}/>
-                )
-            case domNode.attribs?.class?.includes("is-mail") === true:
-                return (
-                    <Icon.Mail content={domToReact(domNode.children)}/>
-                )
-            case domNode.attribs?.class?.includes("is-tel") === true:
-                return (
-                    <Icon.Tel content={domToReact(domNode.children)}/>
-                )
-            case domNode.attribs?.class?.includes("is-fax") === true:
-                return (
-                    <Icon.Fax content={domToReact(domNode.children)}/>
-                )
-            case domNode.attribs?.class?.includes("is-resume") === true:
-                return (
-                    <Icon.Resume content={domToReact(domNode.children)}/>
-                )
+                                    <div className="column is-2">
+                                        <button className="button is-danger is-rounded" onClick={() => download({
+                                            URL: domNode.children[0].attribs.href,
+                                            name: domNode.children[0].children[0]?.data
+                                        })}>Download
+                                        </button>
+                                    </div>
+                            </div>
 
 
+                    ) : (
+                        <div/>
+                    )
+
+                case domNode.attribs?.class?.includes("is-address") === true:
+                    return (
+                        <Icon.Address content={domToReact(domNode.children)}/>
+                    )
+                case domNode.attribs?.class?.includes("is-mail") === true:
+                    return (
+                        <Icon.Mail content={domToReact(domNode.children)}/>
+                    )
+                case domNode.attribs?.class?.includes("is-tel") === true:
+                    return (
+                        <Icon.Tel content={domToReact(domNode.children)}/>
+                    )
+                case domNode.attribs?.class?.includes("is-fax") === true:
+                    return (
+                        <Icon.Fax content={domToReact(domNode.children)}/>
+                    )
+                case domNode.attribs?.class?.includes("is-resume") === true:
+                    return (
+                        <Icon.Resume content={domToReact(domNode.children)}/>
+                    )
+
+
+            }
         }
     }
-}
 
-const HtmlProcessing = ({htmlText}) => {
+
     const HtmlRender = parse(htmlText, options)
+
 
     return HtmlRender
 }

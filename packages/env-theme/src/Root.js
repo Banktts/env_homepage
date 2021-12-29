@@ -8,15 +8,20 @@ import Footer from "./components/Footer";
 import People from "./pages/people";
 import Source from "@fortawesome/fontawesome-free/js/all"
 import {BackgroundView} from "./components";
+import FormDownload from "./pages/formDownload";
+import FormDownloadGroup from "./pages/formDownloadGroup";
 const Root = ({state, actions}) => {
-
+    useEffect(()=>{
+        actions.source.fetch(state.router.link)
+    },[])
     const data = state.source.get(state.router.link)
+    console.log("data:",data,data.isForm)
     return (
         <BackgroundView >
 
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <Global styles={bulmaStyle}/>
-            <script defer src={Source}></script>
+
             <section className="hero is-danger">
                 <Nav/>
             </section>
@@ -24,6 +29,8 @@ const Root = ({state, actions}) => {
             <CustomSwicth data={data}>
                 <Home when={data.isHome}/>
                 <People when={data.isPeople}/>
+                <FormDownload when={data.isForm}/>
+                <FormDownloadGroup when={data.isFormGroup}/>
             </CustomSwicth>
             <div style={{alignContent:"flex-end"}}>
                 <Footer/>

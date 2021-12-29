@@ -2,7 +2,7 @@ const settings = {
     "name": "env-homepage",
     "state": {
         "frontity": {
-            "url": "https://test.frontity.org",
+            "url": "http://localhost:8000",
             "title": "Test Frontity Blog",
             "description": "WordPress installation for Frontity development"
         }
@@ -36,22 +36,22 @@ const settings = {
                         [
                             "Student",
                             [[
-                                "Senior project form",
-                                "/senior_project_form"
+                                "Senior project",
+                                "/senior_project"
                             ],
                                 [
-                                    "Internship_form",
-                                    "/internship_form"
+                                    "Internship",
+                                    "/internship"
                                 ],
                                 [
-                                    "Thesis form",
-                                    "/thesis_form"
+                                    "Thesis",
+                                    "/thesis"
                                 ]
                             ]
                         ],
                         [
-                            "Japan",
-                            "/tag/japan/"
+                            "Labs",
+                            "/labs"
                         ],
                         [
                             "About Us",
@@ -83,7 +83,7 @@ const settings = {
             "name": "@frontity/wp-source",
             "state": {
                 "source": {
-                    "url": "https://envtest81267821.wordpress.com"
+                    "url": "http://localhost:8000"
                 }
             }
         },

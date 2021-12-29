@@ -7,7 +7,8 @@ import {Level, SeeAllButton} from "./index";
 import Link from "@frontity/components/link/index";
 
 const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, responsiveConfig}) => {
-    let data = rawData?.items.slice(0,number)
+
+    let data = rawData?.items?.length !== undefined ? rawData?.items.slice(0,number) : []
     const [content, setContent] = useState(splitArray(data, responsiveConfig.isDesktop))
     const [numberOfDot, setNumberOfDot] = useState(Math.ceil(data?.length / responsiveConfig.isDesktop))
     const [index, setIndex] = useState(0)
@@ -54,7 +55,7 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
     return (
         <CarouselContainer>
             <Level leftChildren={<h3 className="title is-3">{name}</h3>}
-                   rightChildren={<Link link={rawData.route}><SeeAllButton/></Link>}/>
+                   rightChildren={<SeeAllButton link={rawData.route}/>}/>
             <ScrollShow>
                 <SwipeableViews enableMouseEvents index={index} onChangeIndex={(i) => handleChangeIndex(i)}
                                 resistance

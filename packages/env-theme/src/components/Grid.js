@@ -9,7 +9,7 @@ const Grid = ({state,data,children}) =>{
         <div>
             {children}
             <div className="columns is-centered is-multiline">
-                {data.items.map((item) => {
+                {data.items?.map((item) => {
                     const post = state.source[item.type][item.id]
                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
                     return (

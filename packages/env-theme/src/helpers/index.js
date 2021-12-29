@@ -27,11 +27,12 @@ export const FeaturedMedia = ({state, id}) => {
 };
 
 export const CustomSwicth = ({children, data}) => {
+    console.log("Switch:",data.isArchive,data.isPostType)
     return (
         <Switch>
             {children}
-            <PageAndPost when={data.isPost || data.isPage}/>
-            <Category when={data.isCategory}/>
+            <PageAndPost when={data.isPostType }/>
+            <Category when={data.isArchive}/>
             <div when={data.isFetching}/>
             <div when={data.isError}/>
 

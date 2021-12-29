@@ -9,5 +9,13 @@ $title-color: rgb(172,23,28);
 $footer-background-color: rgb(125,37,20);
 $footer-color: true;
 $family-primary: $Kanit;
-
+$input-shadow: none;
+$input-border-color: none;
+$input-hover-color: none;
+$input-hover-border-color: none;
+$input-focus-color: none;
+$input-focus-border-color: none;
+$input-focus-box-shadow-color: none;
+$tabs-link-active-color: rgb(125,37,20);
+$tabs-link-active-border-bottom-color: rgb(125,37,20);
 @import "../../../../node_modules/bulma/bulma.sass";

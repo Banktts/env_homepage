@@ -16,7 +16,8 @@ services:
       - db
     image: wordpress
     volumes:
-      - wordpress_data:/var/www/html
+      - ./wordpress_data:/var/www/html
+      - ./upload.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - "8000:80"
     restart: always
@@ -38,5 +39,7 @@ services:
       - wordpress
 volumes:
   db_data:
-  wordpress_data:
+    external:
+      name: env-database
+
 

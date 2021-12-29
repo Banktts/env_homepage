@@ -1,12 +1,12 @@
 const Icon = ({icon, content}) => {
     return (
         <div>
-            <span className="icon-text">
-                <span className="icon" style={{marginRight:"20px"}}>
+            <span className="columns">
+                <div className="column is-1 " >
                     {icon}
-                </span>
-                <span/>
-                <div className="is-flex-direction-row">
+                </div>
+
+                <div className="column is-11" >
                     {content}
                 </div>
             </span>

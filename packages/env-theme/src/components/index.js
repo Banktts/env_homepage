@@ -11,7 +11,7 @@ import Category from "./Category";
 import {SeeAllButton} from "./Button";
 import {Level} from "./Level";
 import Text from "./text";
-
+import {Search} from "./Search";
 
 
 const Icon = {
@@ -34,5 +34,6 @@ export {
     BackgroundView,
     SeeAllButton,
     Level,
-    Text
+    Text,
+    Search
 }

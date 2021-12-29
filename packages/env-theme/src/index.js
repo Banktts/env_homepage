@@ -11,14 +11,24 @@ export default {
         envTheme: Root
     },
     state: {
-        envTheme: {}
+        envTheme: {
+            theme:{
+                autoPrefetch: "all",
+            }
+        }
     },
     actions: {
         envTheme: {
             beforeSSR: async ({ state, actions }) =>{
           
                 await actions.source.fetch(`/category/events/`)
-
+                await actions.source.fetch(`/category/faculty-members`)
+                await actions.source.fetch(`/form/internship_form`)
+                await actions.source.fetch(`/form/senior_project_form`)
+                await actions.source.fetch(`/form/thesis_master_form`)
+                await actions.source.fetch(`/form/thesis_doctorate_form`)
+                await actions.source.fetch(`/form/thesis_inter_form`)
+                await actions.source.fetch(`/labs_form`)
 
             }
 
@@ -40,6 +50,7 @@ export default {
                     func: ({state, link, params}) => {
                         state.source.data[link] = {
                             isPage: true,
+                            isPostType: true,
                             type: "post",
                             id: params.id
                         }
@@ -48,13 +59,56 @@ export default {
                 {
                     pattern: "/post/*",
                     func: ({state, link, params}) => {
+                        console.log(params.params)
                         state.source.data[link] = {
                             isPost: true,
                             type: "post",
                             id: params.params
                         }
                     }
+                },   {
+                    pattern: "/senior_project",
+                    func: async({state, link}) => {
+                        Object.assign(state.source.data[link], {
+                            isPostType: true,
+                            isForm: true,
+                            endpoint: "/form/senior_project_form"
+                        });
+                    }
+                },{
+                    pattern: "/internship",
+                    func: async({state, link}) => {
+                        Object.assign(state.source.data[link], {
+                            isPostType: true,
+                            isForm: true,
+                            endpoint: "/form/internship_form"
+                        });
+                    }
+                },{
+                    pattern: "/labs",
+                    func: async({state, link}) => {
+                        Object.assign(state.source.data[link], {
+                            isPostType: true,
+                            isForm: true,
+                            endpoint: "/labs_form"
+                        });
+                    }
+                },{
+                    pattern: "/thesis",
+                    func: async({state, link}) => {
+                        Object.assign(state.source.data[link], {
+                            isPostType: true,
+                            isFormGroup: true,
+                            title: "Thesis",
+                            endpoint: {
+                                master:"/form/thesis_master_form",
+                                doctor:"/form/thesis_doctorate_form",
+                                inter:"/form/thesis_inter_form"
+                            }
+                        });
+                    }
                 }
+
 
             ]
 
