@@ -32,6 +32,22 @@ const settings = {
                                     "/administrative_staffs"
                                 ]
                             ]
+                        ],[
+                            "Academics",[
+                                [
+                                    "Bachelor degree",
+                                    "/bachelor_degree"
+                                ],[
+                                    "Master degree",
+                                    "/master_degree"
+                                ],[
+                                    "Doctorate degree",
+                                    "/doctorate_degree"
+                                ],[
+                                    "Scholarship",
+                                    "/scholarship"
+                                ]
+                            ]
                         ],
                         [
                             "Student",
