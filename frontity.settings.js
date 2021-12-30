@@ -1,7 +1,7 @@
 const settings = {
     "name": "env-homepage",
     "state": {
-        "frontity": {
+        "Environmental Engineering": {
             "url": "http://localhost:8000",
             "title": "Test Frontity Blog",
             "description": "WordPress installation for Frontity development"
