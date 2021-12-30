@@ -29,6 +29,7 @@ export default {
                 await actions.source.fetch(`/form/thesis_doctorate_form`)
                 await actions.source.fetch(`/form/thesis_inter_form`)
                 await actions.source.fetch(`/labs_form`)
+                await actions.source.fetch("/bachelor_degree")
 
             }
 
