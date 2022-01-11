@@ -5,6 +5,7 @@ import Mail from './message.png'
 import Facebook from './facebook.png'
 import Logo from '../image/LOGO.png'
 
+
 const IconElement = ({type}) => {
     switch (type) {
         case "phone":

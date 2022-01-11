@@ -24,6 +24,7 @@ export default {
                 await actions.source.fetch(`/bachelor_degree`)
                 await actions.source.fetch(`/master_degree`)
                 await actions.source.fetch(`/doctorate_degree`)
+                await actions.source.fetch(`/about_us`)
             }
 
         }

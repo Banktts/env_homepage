@@ -1,9 +1,16 @@
-import logo from "./LOGO.png"
+import chula_logo from "./chula-logo-text.png"
+import {styled} from "frontity";
 
-export const Logo = () =>{
-    return(
+export const Logo = () => {
+    return (
+        <LogoStyle> <img src={chula_logo} /></LogoStyle>
 
-        <img src={logo} width="112" height="480"/>
 
     )
 }
+
+const LogoStyle = styled.figure`
+ overflow: hidden;
+  max-height: 4rem;
+  
+`

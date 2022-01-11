@@ -13,10 +13,7 @@ const settings = {
             "state": {
                 "theme": {
                     "menu": [
-                        [
-                            "Home",
-                            "/"
-                        ],
+
                         [
                             "People",
                             [[
@@ -71,7 +68,7 @@ const settings = {
                         ],
                         [
                             "About Us",
-                            "/about-us/"
+                            "/about_us/"
                         ]
                     ],
                     "postCategories": {
