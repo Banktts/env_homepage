@@ -1,12 +1,12 @@
 const Icon = ({icon, content}) => {
     return (
         <div>
-            <span className="columns">
-                <div className="column is-1 " >
+            <span className="columns is-mobile is-gapless">
+                <div className="column is-1 m-3 " >
                     {icon}
                 </div>
 
-                <div className="column is-11" >
+                <div className="column is-11 m-3" >
                     {content}
                 </div>
             </span>

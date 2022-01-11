@@ -6,12 +6,10 @@ const {useState} = require("react");
 
 const FormDownloadGroup = ({state, actions}) => {
     const data = state.source.get(state.router.link)
-    const master  = state.source.get(data.endpoint.master)
-    const doctor = state.source.get(data.endpoint.doctor)
-    const inter = state.source.get(data.endpoint.inter)
-    const masterData = state.source[master.type][master.id]
-    const doctorData = state.source[doctor.type][doctor.id]
-    const interData = state.source[inter.type][inter.id]
+    console.log("data",data)
+    const masterData = state.source[data.master.type][data.master.id]
+    const doctorData = state.source[data.doctor.type][data.doctor.id]
+    const interData = state.source[data.inter.type][data.inter.id]
     const [search, setSearch] = useState("")
     const tabsList = ["Master","Doctorate","International Student"]
     const [currentData,setCurrentData] = useState(masterData)

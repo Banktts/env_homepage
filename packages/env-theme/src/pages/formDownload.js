@@ -6,9 +6,10 @@ const {useState} = require("react");
 
 const FormDownload = ({state, actions}) => {
     const data = state.source.get(state.router.link)
-    const formData  = state.source.get(data.endpoint)
-    const rawData = state.source[formData.type][formData.id]
+
+    const rawData = state.source[data.type][data.id]
     const [search, setSearch] = useState("")
+    console.log("data form",data )
     return (
         <View>
             <div>

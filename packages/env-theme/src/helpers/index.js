@@ -8,7 +8,14 @@ export const getPostFromCategory = ({state, actions, params}) => {
     useEffect(()=>{
         actions.source.fetch(`/category/${params}`)
     },[])
-    return state.source.get(`/category/${params}`)
+    let items = state.source.get(`/category/${params}`)
+    for(let i= 2;i<=items?.totalPages;i++){
+        useEffect(()=>{
+            actions.source.fetch(`category/${params}page/${i}`)
+        },[])
+        console.log("getPostFromCategory",state.source.get(`category/${params}page/${i}`))
+    }
+    return items
 }
 
 

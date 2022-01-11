@@ -1,17 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 import {styled} from "frontity";
 import Phone from './phone.png'
 import Mail from './message.png'
 import Facebook from './facebook.png'
+import Logo from '../image/LOGO.png'
+
 
 const IconElement = ({type}) => {
     switch (type) {
         case "phone":
-            return(
+            return (
                 <img src={Phone}/>
             )
         case "mail":
-            return(
+            return (
                 <img src={Mail}/>
             )
         case "facebook":
@@ -19,18 +21,18 @@ const IconElement = ({type}) => {
                 <img src={Facebook}/>
             )
         default:
-            return(<div/>)
+            return (<div/>)
     }
 }
 
-export const Icon = ({type,handleClick}) => {
+export const Icon = ({type, handleClick}) => {
     return (
         <IconComponent className="icon">
-            <IconElement  type={type} onClick={handleClick}/>
+            <IconElement type={type} onClick={handleClick}/>
         </IconComponent>
     )
 }
 
 const IconComponent = styled.span`
-    margin: 5px;
+  margin: 5px;
 `

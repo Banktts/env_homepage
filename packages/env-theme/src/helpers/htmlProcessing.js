@@ -5,59 +5,59 @@ import parse, {domToReact} from 'html-react-parser';
 import {Icon} from "../components";
 
 
-const Publication = ({val}) => {
-    const N = val?.length
-    const pageN = Math.ceil(N / 5)
-    const [page, setPage] = useState(0)
-    const dataSplice = splitArray(val, 5)
-    const [content, setContent] = useState(dataSplice[0])
-    const PageKey = [...Array(pageN).keys()].map((index) => {
-        return index === 0 ? "NEW" : `PAGE ${index + 1}`
-    })
-    const handlePage = ({key}) => {
-        setPage(key)
-        setContent(dataSplice[key])
-    }
-    return (
-        <div>
-            <div className="tabs is-centered">
-                <ul>
-                    {PageKey.map((element, i) => {
-                        return (
-                            <li key={`tab-publication-${i}`} className={i === page ? "is-active" : ""}
-                                onClick={() => handlePage({key: i})}>
-                                <a>{element}</a>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-            {content.map((val, i) => {
-                return (
-                    <div key={`publication-content-${i}`}>
-                        {domToReact(val.children, options)}
-                        <hr/>
-                    </div>
-                )
-            })}
-
-        </div>
-    )
-
-}
-
-
 const HtmlProcessing = ({htmlText, filter}) => {
 
+    const Publication = ({val}) => {
+        const N = val?.length
+        const pageN = Math.ceil(N / 5)
+        const [page, setPage] = useState(0)
+        const dataSplice = splitArray(val, 5)
+        const [content, setContent] = useState(dataSplice[0])
+        const PageKey = [...Array(pageN).keys()].map((index) => {
+            return index === 0 ? "NEW" : `PAGE ${index + 1}`
+        })
+        const handlePage = ({key}) => {
+            setPage(key)
+            setContent(dataSplice[key])
+        }
+        return (
+            <div >
+                <div className="columns is-centered is-mobile is-multiline   " >
 
+                        {PageKey.map((element, i) => {
+                            return (
+                                <div className="column is-1-desktop is-one-quarter-mobile">
+                                    <button  key={`tab-publication-${i}`} className={i === page ? "button is-small is-danger is-active" : "button is-small is-danger is-inverted "}
+                                            onClick={() => handlePage({key: i})}>
+                                        {element}
+                                    </button>
+                                </div>
+
+                            )
+                        })}
+
+                </div>
+                <hr/>
+                {content.map((val, i) => {
+                    return (
+                        <div key={`publication-content-${i}`}>
+                            {domToReact(val.children, options)}
+                            <hr/>
+                        </div>
+                    )
+                })}
+
+            </div>
+        )
+
+    }
     const options = {
         replace: domNode => {
             console.log("domNode:", domNode)
             switch (true) {
                 case domNode.attribs?.class?.includes("wp-block-columns") === true:
                     return (
-                        <div className="columns is-multiline is-mobile ">
-                            <br/>
+                        <div className="columns is-multiline is-tablet is-gapless ">
                             {domToReact(domNode.children, options)}
                         </div>
                     )
@@ -70,7 +70,7 @@ const HtmlProcessing = ({htmlText, filter}) => {
                 case domNode.attribs?.class?.includes("wp-block-media-text__media") === true:
                     return (
                         <div className="column">
-                            <figure className="image is-square">
+                            <figure className="image is-16by9">
                                 {domToReact(domNode.children, options)}
                             </figure>
                         </div>
@@ -94,23 +94,24 @@ const HtmlProcessing = ({htmlText, filter}) => {
                     return (<Publication val={domNode?.children[0]?.children[0]?.children}/>)
 
                 case domNode.attribs?.class?.includes("wp-block-file") === true:
-                    return filter?.file === undefined  || domNode.children[0].children[0]?.data.toLowerCase().includes(filter.file.toLowerCase()) ? (
-                            <div className="columns is-gapless is-narrow" id={`file-${domNode.children[0].children[0]?.data}`}>
+                    return filter?.file === undefined || domNode.children[0].children[0]?.data.toLowerCase().includes(filter.file.toLowerCase()) ? (
+                        <div className="columns is-gapless is-narrow"
+                             id={`file-${domNode.children[0].children[0]?.data}`}>
 
-                                    <div className="column is-10">
-                                        <Icon.DownloadFile content={<h6
-                                            className="title is-6" >{domNode.children[0].children[0]?.data}</h6>}/>
-                                    </div>
-
-
-                                    <div className="column is-2">
-                                        <button className="button is-danger is-rounded" onClick={() => download({
-                                            URL: domNode.children[0].attribs.href,
-                                            name: domNode.children[0].children[0]?.data
-                                        })}>Download
-                                        </button>
-                                    </div>
+                            <div className="column is-10">
+                                <Icon.DownloadFile content={<h6
+                                    className="title is-6">{domNode.children[0].children[0]?.data}</h6>}/>
                             </div>
+
+
+                            <div className="column is-2">
+                                <button className="button is-danger is-rounded my-2" onClick={() => download({
+                                    URL: domNode.children[0].attribs.href,
+                                    name: domNode.children[0].children[0]?.data
+                                })}>Download
+                                </button>
+                            </div>
+                        </div>
 
 
                     ) : (
@@ -138,6 +139,13 @@ const HtmlProcessing = ({htmlText, filter}) => {
                         <Icon.Resume content={domToReact(domNode.children)}/>
                     )
 
+                case domNode?.name === "p":
+                    return (
+                        <div className="my-5">
+                            {domToReact(domNode.children, options)}
+                        </div>
+                    )
+
 
             }
         }
@@ -147,7 +155,11 @@ const HtmlProcessing = ({htmlText, filter}) => {
     const HtmlRender = parse(htmlText, options)
 
 
-    return HtmlRender
+    return (
+        <div className="content">
+            {HtmlRender}
+        </div>
+    )
 }
 
 export default connect(HtmlProcessing)

@@ -13,10 +13,7 @@ const settings = {
             "state": {
                 "theme": {
                     "menu": [
-                        [
-                            "Home",
-                            "/"
-                        ],
+
                         [
                             "People",
                             [[
@@ -32,18 +29,18 @@ const settings = {
                                     "/administrative_staffs"
                                 ]
                             ]
-                        ],[
-                            "Academics",[
+                        ], [
+                            "Academics", [
                                 [
                                     "Bachelor degree",
                                     "/bachelor_degree"
-                                ],[
+                                ], [
                                     "Master degree",
                                     "/master_degree"
-                                ],[
+                                ], [
                                     "Doctorate degree",
                                     "/doctorate_degree"
-                                ],[
+                                ], [
                                     "Scholarship",
                                     "/scholarship"
                                 ]
@@ -71,23 +68,28 @@ const settings = {
                         ],
                         [
                             "About Us",
-                            "/about-us/"
+                            "/about_us/"
                         ]
                     ],
-                    "featured": {
-                        "showOnList": false,
-                        "showOnPost": false
-                    },
-                    "breakPoint":{
-                        "isDesktop":{
-                            "minWidth":1024
+                    "postCategories": {
+                        "people": {
+                            "facultyMembers": 3,
+                            "adminStaffs": 5,
+                            "labStaffs":6
+                        }
+
+                    }
+                    ,
+                    "breakPoint": {
+                        "isDesktop": {
+                            "minWidth": 1024
                         },
-                        "isTablet":{
-                            "minWidth":769,
-                            "maxWidth":1023
+                        "isTablet": {
+                            "minWidth": 769,
+                            "maxWidth": 1023
                         },
-                        "isMobile":{
-                            "maxWidth":768
+                        "isMobile": {
+                            "maxWidth": 768
                         }
                     }
                 },
