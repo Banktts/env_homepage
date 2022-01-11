@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "frontity";
 import Link from "@frontity/components/link";
-
+import {Icon} from "../static/icon";
+import {Logo} from "../static/image";
 
 const DropDown = ({ name, link }) => {
     return (
-        <div className="navbar-item has-dropdown is-hoverable">
+        <div className="navbar-item has-dropdown is-hoverable has-shadow">
             <p className="navbar-item" key={name} >
                 {name}
             </p>
@@ -13,9 +14,15 @@ const DropDown = ({ name, link }) => {
             <div className="navbar-dropdown" >
                 {link.map(([name, link]) => {
                     return (
-                        <Link link={link} className="navbar-item has-text-black" key={`navbar-dropdown-item-${name}`} >
-                            {name}
-                        </Link>
+                        <div>
+                            <Link link={link} className="navbar-item has-text-white is-hidden-desktop" key={`navbar-dropdown-item-${name}`} >
+                                {name}
+                            </Link>
+                            <Link link={link} className="navbar-item has-text-black is-hidden-touch" key={`navbar-dropdown-item-${name}`} >
+                                {name}
+                            </Link>
+                        </div>
+
                     );
                 })}
             </div>
@@ -54,7 +61,7 @@ const Nav = ({ state }) => {
             <div className="container">
                 <div className="navbar-brand">
                     <a className="navbar-item">
-                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
+                        <Logo/>
                     </a>
                     <span className={"navbar-burger " + burgerBar} data-target="navbarMenu" onClick={handleBurger}>
                         <span></span>

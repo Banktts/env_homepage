@@ -2,23 +2,26 @@ import HtmlProcessing from "../helpers/htmlProcessing";
 import {connect} from "frontity";
 import {View, ViewContent} from ".";
 import {dateTranslate, FeaturedMedia} from "../helpers";
+import {useEffect} from "react";
 
 const PageAndPost = ({state, actions}) => {
-
+    useEffect(()=>{
+        actions.source.fetch(state.router.link)
+    },[])
     const data = state.source.get(state.router.link)
     const rawData = state.source[data.type][data.id]
-
+    console.log("data",data,rawData)
 
     switch (true) {
-        case data.isPage :
+        case data.isPage || Object.values(state.theme.postCategories.people).includes(rawData.categories[0])  :
             return (
-                <View>
+                <ViewContent>
                     <div>
-                        <HtmlProcessing htmlText={`<h4>${rawData?.title.rendered}</h4>`}/>
+                        {/*<HtmlProcessing htmlText={`<h4>${rawData?.title.rendered}</h4>`}/>*/}
                         <HtmlProcessing htmlText={rawData.content.rendered}/>
 
                     </div>
-                </View>
+                </ViewContent>
 
             )
         case data.isPost:

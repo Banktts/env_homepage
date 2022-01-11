@@ -6,12 +6,12 @@ import {Grid, View} from "../components";
 
 const People = ({state, actions}) => {
     const dataState = state.source.get(state.router.link)
-    const CatData = getPostFromCategory({state: state, actions: actions, params: `${dataState.path}/`})
+
     return (
         <View>
-            <CustomSwicth data={CatData}>
-                <Grid when={CatData.isReady} data={CatData}>
-                    <p className="title is-spaced has-text-weight-bold">{state.source.category[CatData.id]?.name}</p>
+            <CustomSwicth data={dataState}>
+                <Grid when={dataState.isReady} data={dataState}>
+                    <p className="title is-spaced has-text-weight-bold">{state.source.category[dataState.id]?.name}</p>
                 </Grid>
             </CustomSwicth>
         </View>

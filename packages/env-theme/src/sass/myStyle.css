@@ -3940,8 +3940,8 @@ button.dropdown-item {
 }
 a.dropdown-item:hover,
 button.dropdown-item:hover {
-  background-color: whitesmoke;
-  color: #0a0a0a;
+  background-color: white;
+  color: white;
 }
 a.dropdown-item.is-active,
 button.dropdown-item.is-active {
@@ -4426,7 +4426,7 @@ button.dropdown-item.is-active {
 
 .navbar {
   background-color: white;
-  min-height: 3.25rem;
+  min-height: 6rem;
   position: relative;
   z-index: 30;
 }
@@ -4993,7 +4993,7 @@ button.dropdown-item.is-active {
 .navbar > .container {
   align-items: stretch;
   display: flex;
-  min-height: 3.25rem;
+  min-height: 6rem;
   width: 100%;
 }
 .navbar.has-shadow {
@@ -5017,11 +5017,11 @@ button.dropdown-item.is-active {
 
 html.has-navbar-fixed-top,
 body.has-navbar-fixed-top {
-  padding-top: 3.25rem;
+  padding-top: 6rem;
 }
 html.has-navbar-fixed-bottom,
 body.has-navbar-fixed-bottom {
-  padding-bottom: 3.25rem;
+  padding-bottom: 6rem;
 }
 
 .navbar-brand,
@@ -5029,7 +5029,7 @@ body.has-navbar-fixed-bottom {
   align-items: stretch;
   display: flex;
   flex-shrink: 0;
-  min-height: 3.25rem;
+  min-height: 6rem;
 }
 
 .navbar-brand a.navbar-item:focus, .navbar-brand a.navbar-item:hover {
@@ -5044,12 +5044,12 @@ body.has-navbar-fixed-bottom {
 }
 
 .navbar-burger {
-  color: #4a4a4a;
+  color: white;
   cursor: pointer;
   display: block;
-  height: 3.25rem;
+  height: 6rem;
   position: relative;
-  width: 3.25rem;
+  width: 6rem;
   margin-left: auto;
 }
 .navbar-burger span {
@@ -5113,8 +5113,8 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .navbar-link:focus-within,
 .navbar-link:hover,
 .navbar-link.is-active {
-  background-color: #fafafa;
-  color: #485fc7;
+  background-color: white;
+  color: white;
 }
 
 .navbar-item {
@@ -5133,7 +5133,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 }
 .navbar-item.is-tab {
   border-bottom: 1px solid transparent;
-  min-height: 3.25rem;
+  min-height: 6rem;
   padding-bottom: calc(0.5rem - 1px);
 }
 .navbar-item.is-tab:focus, .navbar-item.is-tab:hover {
@@ -5222,17 +5222,17 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   }
   .navbar.is-fixed-top .navbar-menu, .navbar.is-fixed-top-touch .navbar-menu {
     -webkit-overflow-scrolling: touch;
-    max-height: calc(100vh - 3.25rem);
+    max-height: calc(100vh - 6rem);
     overflow: auto;
   }
 
   html.has-navbar-fixed-top-touch,
 body.has-navbar-fixed-top-touch {
-    padding-top: 3.25rem;
+    padding-top: 6rem;
   }
   html.has-navbar-fixed-bottom-touch,
 body.has-navbar-fixed-bottom-touch {
-    padding-bottom: 3.25rem;
+    padding-bottom: 6rem;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -5245,7 +5245,7 @@ body.has-navbar-fixed-bottom-touch {
   }
 
   .navbar {
-    min-height: 3.25rem;
+    min-height: 6rem;
   }
   .navbar.is-spaced {
     padding: 1rem 2rem;
@@ -5268,8 +5268,8 @@ body.has-navbar-fixed-bottom-touch {
     background-color: transparent !important;
   }
   .navbar.is-transparent .navbar-dropdown a.navbar-item:focus, .navbar.is-transparent .navbar-dropdown a.navbar-item:hover {
-    background-color: whitesmoke;
-    color: #0a0a0a;
+    background-color: white;
+    color: white;
   }
   .navbar.is-transparent .navbar-dropdown a.navbar-item.is-active {
     background-color: whitesmoke;
@@ -5346,8 +5346,8 @@ body.has-navbar-fixed-bottom-touch {
     padding-right: 3rem;
   }
   .navbar-dropdown a.navbar-item:focus, .navbar-dropdown a.navbar-item:hover {
-    background-color: whitesmoke;
-    color: #0a0a0a;
+    background-color: white;
+    color: white;
   }
   .navbar-dropdown a.navbar-item.is-active {
     background-color: whitesmoke;
@@ -5401,19 +5401,19 @@ body.has-navbar-fixed-bottom-touch {
 
   html.has-navbar-fixed-top-desktop,
 body.has-navbar-fixed-top-desktop {
-    padding-top: 3.25rem;
+    padding-top: 6rem;
   }
   html.has-navbar-fixed-bottom-desktop,
 body.has-navbar-fixed-bottom-desktop {
-    padding-bottom: 3.25rem;
+    padding-bottom: 6rem;
   }
   html.has-spaced-navbar-fixed-top,
 body.has-spaced-navbar-fixed-top {
-    padding-top: 5.25rem;
+    padding-top: 8rem;
   }
   html.has-spaced-navbar-fixed-bottom,
 body.has-spaced-navbar-fixed-bottom {
-    padding-bottom: 5.25rem;
+    padding-bottom: 8rem;
   }
 
   a.navbar-item.is-active,
@@ -5426,11 +5426,11 @@ body.has-spaced-navbar-fixed-bottom {
   }
 
   .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: #fafafa;
+    background-color: white;
   }
 }
 .hero.is-fullheight-with-navbar {
-  min-height: calc(100vh - 3.25rem);
+  min-height: calc(100vh - 6rem);
 }
 
 .pagination {

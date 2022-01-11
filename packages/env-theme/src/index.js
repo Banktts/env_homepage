@@ -2,7 +2,6 @@ import Root from "./Root";
 import link from "@frontity/html2react/processors/link";
 import image from "@frontity/html2react/processors/image";
 import iframe from "@frontity/html2react/processors/iframe";
-import {post} from "@frontity/wp-source/src/libraries/handlers/index";
 
 
 export default {
@@ -12,25 +11,19 @@ export default {
     },
     state: {
         envTheme: {
-            theme:{
+            theme: {
                 autoPrefetch: "all",
             }
         }
     },
     actions: {
         envTheme: {
-            beforeSSR: async ({ state, actions }) =>{
-          
-                await actions.source.fetch(`/category/events/`)
-                await actions.source.fetch(`/category/faculty-members`)
-                await actions.source.fetch(`/form/internship_form`)
-                await actions.source.fetch(`/form/senior_project_form`)
-                await actions.source.fetch(`/form/thesis_master_form`)
-                await actions.source.fetch(`/form/thesis_doctorate_form`)
-                await actions.source.fetch(`/form/thesis_inter_form`)
-                await actions.source.fetch(`/labs_form`)
-                await actions.source.fetch("/bachelor_degree")
+            beforeSSR: async ({state, actions}) => {
 
+                await actions.source.fetch(`/category/events/`)
+                await actions.source.fetch(`/bachelor_degree`)
+                await actions.source.fetch(`/master_degree`)
+                await actions.source.fetch(`/doctorate_degree`)
             }
 
         }
@@ -39,23 +32,75 @@ export default {
             handlers: [
                 {
                     pattern: "/faculty-members",
-                    func: ({state, link}) => {
-                        state.source.data[link] = {
+                    func: async ({route,state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "posts",
+                            params: {
+                                per_page: 100,
+                                categories: state.theme.postCategories.people.facultyMembers,
+                                _embed: true
+                            }
+                        });
+                        const items = await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/category/faculty-members");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
+                            isPage: true,
                             isPeople: true,
-                            path: "faculty-members"
-                        }
-                    }
+                            isArchive: true,
+                            items: items,
+                        });
+
+                    },
                 },
                 {
-                    pattern: "/faculty-members/:id",
-                    func: ({state, link, params}) => {
-                        state.source.data[link] = {
+                    pattern: "/administrative_staffs",
+                    func: async ({route, state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "posts",
+                            params: {
+                                per_page: 100,
+                                categories: state.theme.postCategories.people.adminStaffs,
+                                _embed: true
+                            }
+                        });
+                        const items = await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/category/administrative-staffs");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
                             isPage: true,
-                            isPostType: true,
-                            type: "post",
-                            id: params.id
-                        }
-                    }
+                            isPeople: true,
+                            isArchive: true,
+                            items: items,
+                        });
+
+                    },
+                },
+                {
+                    pattern: "/laboratory_staffs",
+                    func: async ({route, state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "posts",
+                            params: {
+                                per_page: 100,
+                                categories: state.theme.postCategories.people.labStaffs,
+                                _embed: true
+                            }
+                        });
+                        const items = await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/category/laboratory-staffs/");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
+                            isPage: true,
+                            isPeople: true,
+                            isArchive: true,
+                            items: items,
+                        });
+
+                    },
                 },
                 {
                     pattern: "/post/*",
@@ -67,46 +112,110 @@ export default {
                             id: params.params
                         }
                     }
-                },   {
+                }, {
                     pattern: "/senior_project",
-                    func: async({state, link}) => {
-                        Object.assign(state.source.data[link], {
-                            isPostType: true,
-                            isForm: true,
-                            endpoint: "/form/senior_project_form"
-                        });
-                    }
-                },{
-                    pattern: "/internship",
-                    func: async({state, link}) => {
-                        Object.assign(state.source.data[link], {
-                            isPostType: true,
-                            isForm: true,
-                            endpoint: "/form/internship_form"
-                        });
-                    }
-                },{
-                    pattern: "/labs",
-                    func: async({state, link}) => {
-                        Object.assign(state.source.data[link], {
-                            isPostType: true,
-                            isForm: true,
-                            endpoint: "/labs_form"
-                        });
-                    }
-                },{
-                    pattern: "/thesis",
-                    func: async({state, link}) => {
-                        Object.assign(state.source.data[link], {
-                            isPostType: true,
-                            isFormGroup: true,
-                            title: "Thesis",
-                            endpoint: {
-                                master:"/form/thesis_master_form",
-                                doctor:"/form/thesis_doctorate_form",
-                                inter:"/form/thesis_inter_form"
+                    func: async ({route, params, state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "senior_project_form",
+                                _embed: true
                             }
                         });
+                        await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/form/senior_project_form");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
+                            isForm: true,
+                            isArchive: true,
+                        });
+                    },
+                }, {
+                    pattern: "/internship",
+                    func: async ({route, params, state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "internship_form",
+                                _embed: true
+                            }
+                        });
+                        await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/form/internship_form");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
+                            isForm: true,
+                            isArchive: true,
+                        });
+                    },
+
+                }, {
+                    pattern: "/labs",
+                    func: async ({route, params, state, libraries}) => {
+                        const response = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "labs_form",
+                                _embed: true
+                            }
+                        });
+                        await libraries.source.populate({response, state});
+                        const {type, id} = state.source.get("/labs_form");
+                        Object.assign(state.source.data[route], {
+                            id: id,
+                            type: type,
+                            isForm: true,
+                            isArchive: true,
+                        });
+                    }
+                }, {
+                    pattern: "/thesis",
+                    func: async ({route, params, state, libraries}) => {
+
+                        const responseMaster = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "thesis_master_form",
+                                _embed: true
+                            }
+                        });
+                        const responseDoctor = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "thesis_doctorate_form",
+                                _embed: true
+                            }
+                        });
+                        const responseInter = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "thesis_inter_form",
+                                _embed: true
+                            }
+                        });
+                        Promise.all([libraries.source.populate({response:responseMaster, state:state}),libraries.source.populate({response:responseDoctor, state:state}),libraries.source.populate({response:responseInter, state:state})]).then(
+                            ()=>{
+                                const master = state.source.get("/form/thesis_master_form");
+                                const doctor = state.source.get("/form/thesis_doctorate_form");
+                                const inter = state.source.get("/form/thesis_inter_form");
+                                Object.assign(state.source.data[route], {
+                                    isPostType: true,
+                                    isFormGroup: true,
+                                    title: "Thesis",
+                                    master:master,
+                                    doctor:doctor,
+                                    inter:inter,
+                                });
+                            }
+                        ).catch(
+                            ()=>{
+                                console.log(
+                                    "Wordpress not respond"
+                                )
+                            }
+                        )
                     }
                 }
 
