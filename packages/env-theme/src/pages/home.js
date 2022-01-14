@@ -5,26 +5,19 @@ import {CarouselCard} from "../components";
 import {CardTextOnImage, CardWithContent} from "../components/Card";
 import {View} from "../components/View";
 import {getPostFromCategory} from "../helpers";
+import {Cover} from "../static/image";
 
 
 const Home = ({state, actions}) => {
     const EventsData = getPostFromCategory({state: state, actions: actions, params: `events`})
     const itemEventsData = EventsData?.items
     return (
-        <>
+
             <div>
-                <section className="hero is-danger is-fullheight">
-                    <div className="hero-body">
-                        <div className="container has-text-centered">
-                            <p className="title">
-                                Title sfdsfsdfsd2
-                            </p>
-                            <p className="subtitle">
-                                Subtitle
-                            </p>
-                        </div>
-                    </div>
-                </section>
+                <div className="m-auto">
+                    <Cover/>
+                </div>
+
                 <View>
                     <CarouselCard rawData={EventsData}
                                   name="Event"
@@ -56,7 +49,7 @@ const Home = ({state, actions}) => {
 
                 </View>
             </div>
-        </>
+
     );
 };
 

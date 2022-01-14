@@ -1,3 +1,7 @@
+import { config } from "dotenv";
+
+config();
+
 const settings = {
     "name": "env-homepage",
     "state": {
@@ -101,7 +105,7 @@ const settings = {
             "name": "@frontity/wp-source",
             "state": {
                 "source": {
-                    "url": "http://localhost:8000"
+                    "url": "http://wordpress"
                 }
             }
         },

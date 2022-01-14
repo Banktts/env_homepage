@@ -17,7 +17,7 @@ export const ViewContent = ({children}) => {
 
 export const BackgroundView = ({children}) => {
     return (
-        <BackgroundViewStyle className={"has-background-light"}>
+        <BackgroundViewStyle className={"has-background-light is-justify-content-flex-start"}>
             {children}
         </BackgroundViewStyle>
     )

@@ -218,7 +218,46 @@ export default {
                             }
                         )
                     }
+                },
+                {
+                    pattern: "/scholarship",
+                    func: async ({route, params, state, libraries}) => {
+
+                        const thaiScholarship = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "thai_scholarship",
+                                _embed: true
+                            }
+                        });
+                        const interScholarship = await libraries.source.api.get({
+                            endpoint: "pages",
+                            params: {
+                                slug: "inter_scholarship",
+                                _embed: true
+                            }
+                        });
+                        Promise.all([libraries.source.populate({response:thaiScholarship, state:state}),libraries.source.populate({response:interScholarship, state:state})]).then(
+                            ()=>{
+                                const thai = state.source.get("/thai_scholarship");
+                                const inter = state.source.get("/inter_scholarship");
+                                Object.assign(state.source.data[route], {
+                                    isPostType: true,
+                                    isScholarshipGroup: true,
+                                    thai:thai,
+                                    inter:inter,
+                                });
+                            }
+                        ).catch(
+                            ()=>{
+                                console.log(
+                                    "Wordpress not respond"
+                                )
+                            }
+                        )
+                    }
                 }
+
 
 
             ]

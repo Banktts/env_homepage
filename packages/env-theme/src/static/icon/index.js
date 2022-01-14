@@ -3,7 +3,7 @@ import {styled} from "frontity";
 import Phone from './phone.png'
 import Mail from './message.png'
 import Facebook from './facebook.png'
-import Logo from '../image/LOGO.png'
+
 
 
 const IconElement = ({type}) => {

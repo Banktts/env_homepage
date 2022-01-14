@@ -10,6 +10,7 @@ import Source from "@fortawesome/fontawesome-free/js/all"
 import {BackgroundView} from "./components";
 import FormDownload from "./pages/formDownload";
 import FormDownloadGroup from "./pages/formDownloadGroup";
+import ScholarshipGroup from "./pages/scholarshipGroup";
 const Root = ({state, actions}) => {
     useEffect(()=>{
         actions.source.fetch(state.router.link)
@@ -17,7 +18,7 @@ const Root = ({state, actions}) => {
     const data = state.source.get(state.router.link)
     console.log("data:",data,data.isForm)
     return (
-        <BackgroundView >
+        <BackgroundView  >
 
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <Global styles={bulmaStyle}/>
@@ -26,13 +27,14 @@ const Root = ({state, actions}) => {
                 <Nav/>
             </section>
 
-            <CustomSwicth data={data}>
+            <CustomSwicth data={data} >
                 <Home when={data.isHome}/>
                 <People when={data.isPeople}/>
                 <FormDownload when={data.isForm}/>
                 <FormDownloadGroup when={data.isFormGroup}/>
+                <ScholarshipGroup when={data.isScholarshipGroup}/>
             </CustomSwicth>
-            <div style={{alignContent:"flex-end"}}>
+            <div className="is-justify-content-flex-end">
                 <Footer/>
             </div>
 

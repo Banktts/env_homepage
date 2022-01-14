@@ -138,6 +138,27 @@ const HtmlProcessing = ({htmlText, filter}) => {
                     return (
                         <Icon.Resume content={domToReact(domNode.children)}/>
                     )
+                case domNode.attribs?.class?.includes("is-link") === true:
+                    return (
+                        <div className="columns  "
+                             id={`file-${domNode.children[0].children[0]?.data}`}>
+
+                            <div className="column is-10">
+                                <Icon.Link content={domNode?.children[0]?.children[0]?.data}/>
+                            </div>
+
+
+                            <div className="column is-2 ">
+                                <button className="button is-dark is-rounded mx-4 my-2" onClick={() => download({
+                                    URL: domNode.children[0].attribs.href,
+                                    name: domNode.children[0].children[0]?.data
+                                })}>Link
+                                </button>
+                            </div>
+                        </div>
+
+
+                    )
 
                 case domNode?.name === "p":
                     return (

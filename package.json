@@ -25,6 +25,7 @@
     "@frontity/wp-source": "^1.11.1",
     "bulma": "latest",
     "dateformat": "^5.0.2",
+    "dotenv": "^11.0.0",
     "env-theme": "file:packages/env-theme",
     "frontity": "^1.14.1",
     "html-react-parser": "^1.4.2",

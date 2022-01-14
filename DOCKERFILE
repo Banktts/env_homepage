@@ -1,5 +1,6 @@
 FROM node
 
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
@@ -9,6 +10,7 @@ RUN npm install --only=production
 COPY . .
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
+
 
 RUN npm run build
 

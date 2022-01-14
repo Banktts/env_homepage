@@ -1,4 +1,4 @@
-const Icon = ({icon, content}) => {
+const CustomIcon = ({icon, content}) => {
     return (
         <div>
             <span className="columns is-mobile is-gapless">
@@ -15,9 +15,9 @@ const Icon = ({icon, content}) => {
     )
 }
 
-export const DownloadFile = ({content}) => {
+const DownloadFile = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="far fa-3x fa-file-pdf"></i>}
             content={content}
 
@@ -25,9 +25,9 @@ export const DownloadFile = ({content}) => {
     )
 }
 
-export const Address = ({content}) => {
+const Address = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="fas fa-lg fa-address-book"></i>}
             content={content}
 
@@ -35,9 +35,9 @@ export const Address = ({content}) => {
     )
 }
 
-export const Mail = ({content}) => {
+const Mail = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="far fa-lg fa-envelope"></i>}
             content={content}
 
@@ -45,9 +45,9 @@ export const Mail = ({content}) => {
     )
 }
 
-export const Tel = ({content}) => {
+const Tel = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="fas fa-lg fa-phone-alt"></i>}
             content={content}
 
@@ -55,9 +55,9 @@ export const Tel = ({content}) => {
     )
 }
 
-export const Fax = ({content}) => {
+ const Fax = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="fas fa-lg fa-fax"></i>}
             content={content}
 
@@ -65,12 +65,27 @@ export const Fax = ({content}) => {
     )
 }
 
-export const Resume = ({content}) => {
+const Resume = ({content}) => {
     return (
-        <Icon
+        <CustomIcon
             icon={<i className="far fa-lg fa-id-badge"></i>}
             content={content}
 
         />
     )
+}
+
+ const Link = ({content}) => {
+    return (
+        <CustomIcon
+            icon={<i className="fas fa-link"></i>}
+            content={content}
+
+        />
+    )
+
+}
+
+export const Icon = {
+    DownloadFile, Address, Mail, Tel, Fax, Resume,Link
 }
