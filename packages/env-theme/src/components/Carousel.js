@@ -2,9 +2,8 @@ import React, {cloneElement, useEffect, useState} from "react";
 import {connect, styled} from "frontity";
 import SwipeableViews from 'react-swipeable-views';
 import {useMediaQuery} from 'react-responsive'
-import {dateTranslate, FeaturedMedia, splitArray} from "../helpers";
+import {FeaturedMedia, splitArray} from "../helpers";
 import {Level, SeeAllButton} from "./index";
-import Link from "@frontity/components/link/index";
 
 const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, responsiveConfig}) => {
 
@@ -67,7 +66,7 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
                                 {data.map((item) => {
                                     const post = state.source[item.type][item.id]
                                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
-                                    const date = dateTranslate(post.date)
+
                                     return (
 
                                         <div key={`event-post-${post.id}`} className={bulmaStyle}>
@@ -76,7 +75,7 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
                                                 content: post.content.rendered,
                                                 title: post.title.rendered,
                                                 link: item.link,
-                                                date: date
+                                                date: post.date
                                             })}
                                         </div>
 

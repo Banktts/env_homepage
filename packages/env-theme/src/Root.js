@@ -7,14 +7,16 @@ import Home from './pages/home'
 import Footer from "./components/Footer";
 import People from "./pages/people";
 import Source from "@fortawesome/fontawesome-free/js/all"
-import {BackgroundView} from "./components";
+import {BackgroundView, Category, PageAndPost} from "./components";
 import FormDownload from "./pages/formDownload";
 import FormDownloadGroup from "./pages/formDownloadGroup";
 import ScholarshipGroup from "./pages/scholarshipGroup";
+import Switch from "@frontity/components/switch";
 const Root = ({state, actions}) => {
+
     useEffect(()=>{
         actions.source.fetch(state.router.link)
-    },[])
+    })
     const data = state.source.get(state.router.link)
     console.log("data:",data,data.isForm)
     return (
@@ -27,13 +29,22 @@ const Root = ({state, actions}) => {
                 <Nav/>
             </section>
 
-            <CustomSwicth data={data} >
+            <Switch>
                 <Home when={data.isHome}/>
+                <div when={data.isFetching}>loading</div>
+
                 <People when={data.isPeople}/>
                 <FormDownload when={data.isForm}/>
                 <FormDownloadGroup when={data.isFormGroup}/>
                 <ScholarshipGroup when={data.isScholarshipGroup}/>
-            </CustomSwicth>
+                <PageAndPost when={data.isPostType }/>
+                <Category when={data.isArchive}/>
+
+
+                <div when={data.isError}/>
+
+            </Switch>
+
             <div className="is-justify-content-flex-end">
                 <Footer/>
             </div>

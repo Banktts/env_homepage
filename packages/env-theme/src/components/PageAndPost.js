@@ -5,9 +5,7 @@ import {dateTranslate, FeaturedMedia} from "../helpers";
 import {useEffect} from "react";
 
 const PageAndPost = ({state, actions}) => {
-    useEffect(()=>{
-        actions.source.fetch(state.router.link)
-    },[])
+
     const data = state.source.get(state.router.link)
     const rawData = state.source[data.type][data.id]
     console.log("data",data,rawData)

@@ -20,6 +20,20 @@ const Home = ({state, actions}) => {
 
                 <View>
                     <CarouselCard rawData={EventsData}
+                                  name="News"
+                                  number={8}
+                                  bulmaStyle={"column is-one-quarter-desktop is-one-third-tablet is-half-mobile is-centered"}
+                                  responsiveConfig={
+                                      {
+                                          isMobile: 2,
+                                          isTablet: 3,
+                                          isDesktop: 4
+                                      }
+
+                                  }>
+                        <CardTextOnImage/>
+                    </CarouselCard>
+                    <CarouselCard rawData={EventsData}
                                   name="Event"
                                   number={8}
                                   bulmaStyle={"column is-two-third-desktop is-half-tablet is-centered"}
@@ -31,21 +45,9 @@ const Home = ({state, actions}) => {
                                       }
 
                                   }>
-                        <CardWithContent></CardWithContent>
+                        <CardWithContent/>
                     </CarouselCard>
-                    {/*<p className="title is-spaced has-text-weight-bold">Announcements</p>*/}
-                    {/*<CarouselCard data={data}*/}
-                    {/*              bulmaStyle={"column is-one-fifth-desktop is-one-third-tablet is-half-mobile is-centered"}*/}
-                    {/*              responsiveConfig={*/}
-                    {/*                  {*/}
-                    {/*                      isMobile: 2,*/}
-                    {/*                      isTablet: 3,*/}
-                    {/*                      isDesktop: 5*/}
-                    {/*                  }*/}
 
-                    {/*              }>*/}
-                    {/*    <CardTextOnImage/>*/}
-                    {/*</CarouselCard>*/}
 
                 </View>
             </div>

@@ -21,25 +21,25 @@ export default {
             beforeSSR: async ({state, actions}) => {
 
                 await actions.source.fetch(`/category/events/`)
-                await actions.source.fetch(`/bachelor_degree`)
-                await actions.source.fetch(`/master_degree`)
-                await actions.source.fetch(`/doctorate_degree`)
-                await actions.source.fetch(`/about_us`)
-
-                await actions.source.fetch(`/category/faculty-members`)
-                await actions.source.fetch(`/category/administrative-staffs`)
-                await actions.source.fetch(`/category/laboratory-staffs`)
-
-                await actions.source.fetch(`/form/senior_project_form`)
-                await actions.source.fetch(`/form/internship_form`)
-                await actions.source.fetch(`/form/thesis_master_form`)
-                await actions.source.fetch(`/form/thesis_doctorate_form`)
-                await actions.source.fetch(`/form/thesis_inter_form`)
-
-                await actions.source.fetch(`/labs_form`)
-
-                await actions.source.fetch(`/thai_scholarship`)
-                await actions.source.fetch(`/inter_scholarship`)
+                // await actions.source.fetch(`/bachelor_degree`)
+                // await actions.source.fetch(`/master_degree`)
+                // await actions.source.fetch(`/doctorate_degree`)
+                // await actions.source.fetch(`/about_us`)
+                //
+                // await actions.source.fetch(`/category/faculty-members`)
+                // await actions.source.fetch(`/category/administrative-staffs`)
+                // await actions.source.fetch(`/category/laboratory-staffs`)
+                //
+                // await actions.source.fetch(`/form/senior_project_form`)
+                // await actions.source.fetch(`/form/internship_form`)
+                // await actions.source.fetch(`/form/thesis_master_form`)
+                // await actions.source.fetch(`/form/thesis_doctorate_form`)
+                // await actions.source.fetch(`/form/thesis_inter_form`)
+                //
+                // await actions.source.fetch(`/labs_form`)
+                //
+                // await actions.source.fetch(`/thai_scholarship`)
+                // await actions.source.fetch(`/inter_scholarship`)
 
 
 
@@ -81,11 +81,10 @@ export default {
                             params: {
                                 per_page: 100,
                                 categories: state.theme.postCategories.people.adminStaffs,
-                                _embed: true
                             }
                         });
                         const items = await libraries.source.populate({response, state});
-                        const {type, id} = state.source.get("/category/administrative-staffs");
+                        const {type, id} =  state.source.get("/category/administrative-staffs");
                         Object.assign(state.source.data[route], {
                             id: id,
                             type: type,
@@ -105,7 +104,6 @@ export default {
                             params: {
                                 per_page: 100,
                                 categories: state.theme.postCategories.people.labStaffs,
-                                _embed: true
                             }
                         });
                         const items = await libraries.source.populate({response, state});
@@ -138,7 +136,6 @@ export default {
                             endpoint: "pages",
                             params: {
                                 slug: "senior_project_form",
-                                _embed: true
                             }
                         });
                         await libraries.source.populate({response, state});
@@ -157,7 +154,6 @@ export default {
                             endpoint: "pages",
                             params: {
                                 slug: "internship_form",
-                                _embed: true
                             }
                         });
                         await libraries.source.populate({response, state});
@@ -177,7 +173,6 @@ export default {
                             endpoint: "pages",
                             params: {
                                 slug: "labs_form",
-                                _embed: true
                             }
                         });
                         await libraries.source.populate({response, state});
@@ -197,21 +192,18 @@ export default {
                             endpoint: "pages",
                             params: {
                                 slug: "thesis_master_form",
-                                _embed: true
                             }
                         });
                         const responseDoctor = await libraries.source.api.get({
                             endpoint: "pages",
                             params: {
                                 slug: "thesis_doctorate_form",
-                                _embed: true
                             }
                         });
                         const responseInter = await libraries.source.api.get({
                             endpoint: "pages",
                             params: {
                                 slug: "thesis_inter_form",
-                                _embed: true
                             }
                         });
                         Promise.all([libraries.source.populate({response:responseMaster, state:state}),libraries.source.populate({response:responseDoctor, state:state}),libraries.source.populate({response:responseInter, state:state})]).then(
@@ -245,14 +237,12 @@ export default {
                             endpoint: "pages",
                             params: {
                                 slug: "thai_scholarship",
-                                _embed: true
                             }
                         });
                         const interScholarship = await libraries.source.api.get({
                             endpoint: "pages",
                             params: {
                                 slug: "inter_scholarship",
-                                _embed: true
                             }
                         });
                         Promise.all([libraries.source.populate({response:thaiScholarship, state:state}),libraries.source.populate({response:interScholarship, state:state})]).then(

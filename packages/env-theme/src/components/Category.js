@@ -10,18 +10,16 @@ import {NextButton, PrevButton} from "./Button";
 
 const Category = ({state, actions}) => {
     const CatData = state.source.get(state.router.link)
-    useEffect(() => {
-        if (CatData.next) actions.source.fetch(CatData.next);
-    }, []);
+
     console.log("Cat Data:", CatData, CatData.next)
     return (
         <View>
-            <CustomSwicth data={CatData}>
+
                 <List when={CatData.isReady} data={CatData}>
                     <p className="title is-spaced has-text-weight-bold">{state.source.category[CatData.id]?.name}</p>
                 </List>
 
-            </CustomSwicth>
+
             <Level leftChildren={CatData.previous !== undefined ? <PrevButton link={CatData.previous}/> : null}
                    rightChildren={CatData.next !== undefined ? <NextButton link={CatData.next}/>: null}/>
         </View>

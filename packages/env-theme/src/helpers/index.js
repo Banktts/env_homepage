@@ -1,20 +1,9 @@
-import Switch from "@frontity/components/switch";
 import {HtmlProcessing} from "./htmlProcessing";
-import {Category, PageAndPost} from "../components";
 import dateFormat from "dateformat";
 import { useEffect } from "react";
 
 export const getPostFromCategory = ({state, actions, params}) => {
-    useEffect(()=>{
-        actions.source.fetch(`/category/${params}`)
-    },[])
     let items = state.source.get(`/category/${params}`)
-    for(let i= 2;i<=items?.totalPages;i++){
-        useEffect(()=>{
-            actions.source.fetch(`category/${params}page/${i}`)
-        },[])
-        console.log("getPostFromCategory",state.source.get(`category/${params}page/${i}`))
-    }
     return items
 }
 
@@ -27,25 +16,14 @@ export const download = ({URL,name}) => {
 }
 export const FeaturedMedia = ({state, id}) => {
     const media = state.source.attachment[id];
+    console.log("Feature media:",media)
     if (!media) return null;
     return (
         media.source_url
     );
 };
 
-export const CustomSwicth = ({children, data}) => {
-    console.log("Switch:",data.isArchive,data.isPostType)
-    return (
-        <Switch>
-            {children}
-            <PageAndPost when={data.isPostType }/>
-            <Category when={data.isArchive}/>
-            <div when={data.isFetching}/>
-            <div when={data.isError}/>
 
-        </Switch>
-    )
-}
 
 export const splitArray = (array, part) => {
     const tmp = [];
@@ -59,7 +37,12 @@ export const dateTranslate = (date) =>{
     if (date !== undefined){
         return dateFormat(date,"dddd, mmmm dS, yyyy")
     }
+}
 
+export const dateShortTranslate = (date) => {
+    if (date !== undefined){
+        return dateFormat(date,"dd, mmmm")
+    }
 }
 
 

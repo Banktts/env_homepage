@@ -1,18 +1,25 @@
-import { styled } from "frontity";
-import { FullImageView } from "./image";
+import {styled} from "frontity";
+import {FullImageView} from "./image";
 import Link from "@frontity/components/link";
 import HtmlProcessing from "../helpers/htmlProcessing";
+import {dateShortTranslate, dateTranslate} from "../helpers";
 
-export const CardTextOnImage = ({ desc, src, link }) => {
+export const CardTextOnImage = ({src, title, link, date, content}) => {
     return (
         <CardEffect>
             <Link link={link}>
-                <Card className="card ">
-                    <div className="card-image">
-                        <TextOnImage>{desc}</TextOnImage>
-                        <FullImageView src={src} alt={desc} />
-                    </div>
-                </Card>
+                <CardColor className="card">
+
+
+                    <div className="card-content">
+                        <h6 className="title is-6 has-text-white">{title}</h6></div>
+                    <Date>
+                        <p className="has-text-danger is-justify-content-left is-justify-content-flex-end">{dateShortTranslate(date)}</p>
+                    </Date>
+
+
+
+                </CardColor>
             </Link>
         </CardEffect>
 
@@ -36,7 +43,7 @@ export const CardWithContent = ({ src, title, link, date, content }) => {
                         <div className="card-media" style={{ height: "60px", textOverflow: "ellipsis" }}>
                             <div className="content">
                                 {title !== undefined && <HtmlProcessing htmlText={`<h5>${title}</h5>`} />}
-                                {date !== undefined && <h6 className="subtitle is-6 ">{date}</h6>}
+                                {date !== undefined && <h6 className="subtitle is-6 ">{dateTranslate(date)}</h6>}
                             </div>
                         </div>
 
@@ -85,13 +92,24 @@ const CardEffect = styled.div`
   }
 `
 
+const CardColor = styled(Card)`
+  background: linear-gradient(to top, white 20%, rgba(172, 23, 28,1 ) 90%)
+`
 
 const TextOnImage = styled.h1`
   position: absolute;
   height: 100%;
   width: 100%;
-  top: 0;
+  bottom: 0;
   left: 0;
   padding: 25px;
-  background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 0%, rgba(172, 23, 28, 0.8) 100%);
+  background: linear-gradient(to top, black 20%, rgba(172, 23, 28,0.5 ) 80%)
+`
+
+const Date = styled.div`
+  position: absolute;
+  height: 3rem;
+  right: 1rem;
+  bottom: 0rem;
+  
 `
