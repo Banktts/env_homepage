@@ -25,11 +25,12 @@ const PageAndPost = ({state, actions}) => {
         case data.isPost:
             const catName = state.source.category[rawData.categories].name
             const bannerImgSrc = FeaturedMedia({state: state, id: rawData.featured_media})
+            console.log("banner",bannerImgSrc)
             return (
                 <ViewContent>
                     <div>
                         <h5 className="title is-5">{catName.toUpperCase()}</h5>
-                        {bannerImgSrc !== undefined && <figure className="image is-16by9 is-mobile">
+                        {bannerImgSrc !== undefined || bannerImgSrc !== null  && <figure className="image is-16by9 is-mobile">
                             <img className="has-ratio" src={bannerImgSrc} alt={rawData?.title.rendered}/>
                         </figure>}
                         <HtmlProcessing htmlText={`<h4>${rawData?.title.rendered}</h4>`}/>
