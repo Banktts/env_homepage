@@ -12,13 +12,15 @@ import FormDownload from "./pages/formDownload";
 import FormDownloadGroup from "./pages/formDownloadGroup";
 import ScholarshipGroup from "./pages/scholarshipGroup";
 import Switch from "@frontity/components/switch";
+import Loading from "./pages/loading";
+import PageNotFound from "./pages/pageNotFound";
 const Root = ({state, actions}) => {
 
     useEffect(()=>{
         actions.source.fetch(state.router.link)
     })
     const data = state.source.get(state.router.link)
-    console.log("data:",data,data.isForm)
+    // console.log("data:",data,data.isForm)
     return (
         <BackgroundView  >
 
@@ -31,7 +33,7 @@ const Root = ({state, actions}) => {
 
             <Switch>
                 <Home when={data.isHome}/>
-                <div when={data.isFetching}>loading</div>
+                <Loading when={data.isFetching}/>
 
                 <People when={data.isPeople}/>
                 <FormDownload when={data.isForm}/>
@@ -41,7 +43,7 @@ const Root = ({state, actions}) => {
                 <Category when={data.isArchive}/>
 
 
-                <div when={data.isError}/>
+                <PageNotFound when={data.isError}/>
 
             </Switch>
 

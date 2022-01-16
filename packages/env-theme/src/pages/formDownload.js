@@ -9,7 +9,7 @@ const FormDownload = ({state, actions}) => {
 
     const rawData = state.source[data.type][data.id]
     const [search, setSearch] = useState("")
-    console.log("data form",data )
+    // console.log("data form",data )
     return (
         <View>
             <div>

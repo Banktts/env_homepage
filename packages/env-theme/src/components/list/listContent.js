@@ -32,7 +32,7 @@ export const ListContent = ({image, title, link, date, content}) => {
 
 
     ) : (
-        <Link link={link}>
+
             <Container>
                 {date !== undefined && <Text.Date date={date}/>}
                 {title !== undefined && <HtmlProcessing htmlText={`<h5>${title}</h5>`}/>}
@@ -42,8 +42,11 @@ export const ListContent = ({image, title, link, date, content}) => {
 
 
                 </Content>
+                <Link link={link}>
+                    <button className="button is-danger is-rounded is-small">See more</button>
+                </Link>
             </Container>
-        </Link>
+
     )
 }
 

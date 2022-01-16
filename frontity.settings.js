@@ -17,24 +17,7 @@ const settings = {
             "state": {
                 "theme": {
                     "menu": [
-                        ["TABEE","/tabee"],
-
                         [
-                            "People",
-                            [[
-                                "Faculty Members",
-                                "/faculty-members"
-                            ],
-                                [
-                                    "Laboratory Staffs",
-                                    "/laboratory_staffs"
-                                ],
-                                [
-                                    "Administrative Staffs",
-                                    "/administrative_staffs"
-                                ]
-                            ]
-                        ], [
                             "Academics", [
                                 [
                                     "Bachelor degree",
@@ -50,23 +33,41 @@ const settings = {
                                     "/scholarship"
                                 ]
                             ]
-                        ],
-                        [
+                        ], [
                             "Student",
                             [[
                                 "Senior project",
                                 "/senior_project"
                             ],
-                                [
-                                    "Internship",
-                                    "/internship"
-                                ],
-                                [
-                                    "Thesis",
-                                    "/thesis"
-                                ]
+                            [
+                                "Internship",
+                                "/internship"
+                            ],
+                            [
+                                "Thesis",
+                                "/thesis"
+                            ]
                             ]
                         ],
+                        ["TABEE", "/tabee"],
+
+                        [
+                            "People",
+                            [[
+                                "Faculty Members",
+                                "/faculty-members"
+                            ],
+                            [
+                                "Laboratory Staffs",
+                                "/laboratory_staffs"
+                            ],
+                            [
+                                "Administrative Staffs",
+                                "/administrative_staffs"
+                            ]
+                            ]
+                        ],
+
                         [
                             "Labs",
                             "/labs"
@@ -80,7 +81,7 @@ const settings = {
                         "people": {
                             "facultyMembers": 3,
                             "adminStaffs": 5,
-                            "labStaffs":6
+                            "labStaffs": 6
                         }
 
                     }
@@ -96,6 +97,12 @@ const settings = {
                         "isMobile": {
                             "maxWidth": 768
                         }
+                    },
+                    "contactData": {
+                        "tel": "+6622186667",
+                        "mail": "environmental.engcu@gmail.com",
+                        "facebook": "https://www.facebook.com/EngEnviChula"
+
                     }
                 },
 

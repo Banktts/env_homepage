@@ -10,7 +10,7 @@ import {Cover} from "../static/image";
 
 const Home = ({state, actions}) => {
     const EventsData = getPostFromCategory({state: state, actions: actions, params: `events`})
-    const itemEventsData = EventsData?.items
+    const NewsData = getPostFromCategory({state: state, actions: actions, params: `news`})
     return (
 
             <div>
@@ -19,7 +19,7 @@ const Home = ({state, actions}) => {
                 </div>
 
                 <View>
-                    <CarouselCard rawData={EventsData}
+                    <CarouselCard rawData={NewsData}
                                   name="News"
                                   number={8}
                                   bulmaStyle={"column is-one-quarter-desktop is-one-third-tablet is-half-mobile is-centered"}

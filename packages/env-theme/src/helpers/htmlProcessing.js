@@ -53,7 +53,7 @@ const HtmlProcessing = ({htmlText, filter}) => {
     }
     const options = {
         replace: domNode => {
-            console.log("domNode:", domNode)
+            // console.log("domNode:", domNode)
             switch (true) {
                 case domNode.attribs?.class?.includes("wp-block-columns") === true:
                     return (

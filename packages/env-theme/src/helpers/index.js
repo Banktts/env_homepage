@@ -16,7 +16,7 @@ export const download = ({URL,name}) => {
 }
 export const FeaturedMedia = ({state, id}) => {
     const media = state.source.attachment[id];
-    console.log("Feature media:",media)
+    // console.log("Feature media:",media)
     if (!media) return null;
     return (
         media.source_url

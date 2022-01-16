@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "frontity";
 
-import {Grid, View} from "../components";
+import {Grid, Search, View} from "../components";
 
 
 const People = ({state, actions}) => {
@@ -9,13 +9,14 @@ const People = ({state, actions}) => {
         actions.source.fetch(state.router.link)
     })
     const dataState = state.source.get(state.router.link)
-    console.log("people:",dataState)
+    const [search, setSearch] = useState("")
+    // console.log("people:",dataState)
     return (
         <View>
+            <p className="title is-spaced has-text-weight-bold">{state.source.category[dataState.id]?.name}</p>
+            <Search value={search} handlerValue={setSearch}/>
+            <Grid when={dataState.isReady} data={dataState} filter={{search:search}}/>
 
-                <Grid when={dataState.isReady} data={dataState}>
-                    <p className="title is-spaced has-text-weight-bold">{state.source.category[dataState.id]?.name}</p>
-                </Grid>
 
         </View>
 

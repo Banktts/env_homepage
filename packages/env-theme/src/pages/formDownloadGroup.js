@@ -6,7 +6,7 @@ const {useState} = require("react");
 
 const FormDownloadGroup = ({state, actions}) => {
     const data = state.source.get(state.router.link)
-    console.log("data",data)
+    // console.log("data",data)
     const masterData = state.source[data.master.type][data.master.id]
     const doctorData = state.source[data.doctor.type][data.doctor.id]
     const interData = state.source[data.inter.type][data.inter.id]

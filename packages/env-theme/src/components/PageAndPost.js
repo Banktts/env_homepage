@@ -8,7 +8,7 @@ const PageAndPost = ({state, actions}) => {
 
     const data = state.source.get(state.router.link)
     const rawData = state.source[data.type][data.id]
-    console.log("data",data,rawData)
+    // console.log("data",data,rawData)
 
     switch (true) {
         case data.isPage || Object.values(state.theme.postCategories.people).includes(rawData.categories[0])  :

@@ -7,7 +7,7 @@ const {useState} = require("react");
 
 const ScholarshipGroup = ({state, actions}) => {
     const data = state.source.get(state.router.link)
-    console.log("data",data)
+    // console.log("data",data)
     const thaiData = state.source[data.thai.type][data.thai.id]
     const interData = state.source[data.inter.type][data.inter.id]
     const tabsList = ["Thai Student","International Student"]

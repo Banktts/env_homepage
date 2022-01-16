@@ -4,7 +4,7 @@ import {CardWithContent} from "./Card";
 import React from "react";
 
 
-const Grid = ({state,data,children}) =>{
+const Grid = ({state, data, children, filter}) => {
     return (
         <div>
             {children}
@@ -12,14 +12,18 @@ const Grid = ({state,data,children}) =>{
                 {data.items?.map((item) => {
                     const post = state.source[item.type][item.id]
                     const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
-                    console.log("Image:",state.source.attachment)
-                    return (
-                        <div style={{margin:"auto"}} className="column is-one-third-desktop is-half-tablet is-four-fifths-mobile is-narrow"
+
+                    return post.title.rendered.toLowerCase().includes(filter.search.toLowerCase()) ? (
+                        <div style={{margin: "auto"}}
+                             className="column is-one-third-desktop is-half-tablet is-four-fifths-mobile is-narrow"
                              key={post.id}>
-                            <CardWithContent  src={imgSrc} desc={""} title={post.title.rendered}
+
+                            <CardWithContent src={imgSrc} desc={""} title={post.title.rendered}
                                              link={item.link}/>
+
+
                         </div>
-                    )
+                    ) : null
                 })}
             </div>
         </div>

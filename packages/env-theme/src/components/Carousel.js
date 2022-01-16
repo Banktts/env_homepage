@@ -1,18 +1,18 @@
-import React, {cloneElement, useEffect, useState} from "react";
-import {connect, styled} from "frontity";
+import React, { cloneElement, useEffect, useState } from "react";
+import { connect, styled } from "frontity";
 import SwipeableViews from 'react-swipeable-views';
-import {useMediaQuery} from 'react-responsive'
-import {FeaturedMedia, splitArray} from "../helpers";
-import {Level, SeeAllButton} from "./index";
+import { useMediaQuery } from 'react-responsive'
+import { FeaturedMedia, splitArray } from "../helpers";
+import { Level, SeeAllButton } from "./index";
 
-const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, responsiveConfig}) => {
+const CarouselCard = ({ state, name, rawData, number, children, bulmaStyle, responsiveConfig }) => {
 
-    let data = rawData?.items?.length !== undefined ? rawData?.items.slice(0,number) : []
+    let data = rawData?.items?.length !== undefined ? rawData?.items.slice(0, number) : []
     const [content, setContent] = useState(splitArray(data, responsiveConfig.isDesktop))
     const [numberOfDot, setNumberOfDot] = useState(Math.ceil(data?.length / responsiveConfig.isDesktop))
     const [index, setIndex] = useState(0)
     const isDesktop = useMediaQuery(
-        {minDeviceWidth: state.theme.breakPoint.isDesktop.minWidth}
+        { minDeviceWidth: state.theme.breakPoint.isDesktop.minWidth }
     )
 
     const isTablet = useMediaQuery(
@@ -23,7 +23,7 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
     )
 
     const isMobile = useMediaQuery(
-        {maxWidth: state.theme.breakPoint.isMobile.maxWidth}
+        { maxWidth: state.theme.breakPoint.isMobile.maxWidth }
     )
 
     useEffect(() => {
@@ -47,25 +47,27 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
     }, [isDesktop, isMobile, isTablet])
 
     const handleChangeIndex = (val) => {
-    
+
         setIndex(val)
     }
-
+    console.log("content:",content)
     return (
         <CarouselContainer>
             <Level leftChildren={<h3 className="title is-3">{name}</h3>}
-                   rightChildren={<SeeAllButton link={rawData.route}/>}/>
+                rightChildren={<SeeAllButton link={rawData.route} />} />
+
+
             <ScrollShow>
-                <SwipeableViews enableMouseEvents index={index} onChangeIndex={(i) => handleChangeIndex(i)}
-                                resistance
-                                slideStyle={{slideContainer: {padding: "0 20px"}}}>
+                {content.length !== 0 ? <SwipeableViews enableMouseEvents index={index} onChangeIndex={(i) => handleChangeIndex(i)}
+                    resistance
+                    slideStyle={{ slideContainer: { padding: "0 20px" } }}>
                     {content.map((data, i) => {
                         return (
                             <section key={`page-${i}`} className="columns is-mobile is-centered"
-                                     style={{margin: "5px"}}>
+                                style={{ margin: "5px" }}>
                                 {data.map((item) => {
                                     const post = state.source[item.type][item.id]
-                                    const imgSrc = FeaturedMedia({state: state, id: post.featured_media})
+                                    const imgSrc = FeaturedMedia({ state: state, id: post.featured_media })
 
                                     return (
 
@@ -85,25 +87,34 @@ const CarouselCard = ({state, name, rawData, number, children, bulmaStyle, respo
 
                         )
                     })}
-                </SwipeableViews>
+                </SwipeableViews> : <div className="has-text-grey has-text-centered my-auto">
+
+                    <i className="far fa-2x fa-folder-open has-text-grey-light m-2 icon is-large"></i>
+
+                    <h3 className="title is-3 has-text-grey-light ">Empty Data</h3>
+
+                </div>}
 
 
             </ScrollShow>
+
+
 
             <DotContainer className="columns is-mobile is-centered" width={numberOfDot * 15}>
                 {[...Array(numberOfDot).keys()].map((val) => {
 
                     return val === index ? (
-                            <div className="column" key={`dot-${val}`}>
-                                <DotActive/>
-                            </div>)
+                        <div className="column" key={`dot-${val}`}>
+                            <DotActive />
+                        </div>)
                         : (
                             <div className="column" key={`dot-active-${val}`}>
-                                <Dot onClick={() => handleChangeIndex(val)}/>
+                                <Dot onClick={() => handleChangeIndex(val)} />
                             </div>
                         )
                 })}
             </DotContainer>
+
 
         </CarouselContainer>
 

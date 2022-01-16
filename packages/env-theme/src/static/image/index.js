@@ -4,7 +4,7 @@ import {styled} from "frontity";
 import scholarship from "./scholarship.jpg"
 export const Logo = () => {
     return (
-        <LogoStyle> <img src={chula_logo} /></LogoStyle>
+        <LogoStyle> <img src={chula_logo} width="45" height="80" /></LogoStyle>
 
 
     )
