@@ -9,7 +9,7 @@ const CustomButton = ({children, Style}) => {
 export const SeeAllButton = ({link}) => {
     return (
         <Link link={link}>
-            <CustomButton Style={"is-rounded"}>
+            <CustomButton Style={"is-rounded is-small"}>
             <span className="icon">
                 <i className="fas fa-forward"></i>
             </span>

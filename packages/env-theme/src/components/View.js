@@ -5,7 +5,7 @@ import {styled} from "frontity";
 export const View = ({children}) => {
     return (
 
-        <ViewStyle className="container is-desktop  p-6">{children}</ViewStyle>
+        <ViewStyle className="container is-widescreen py-6 px-2 ">{children}</ViewStyle>
 
 
     )

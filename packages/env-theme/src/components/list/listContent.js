@@ -8,9 +8,9 @@ import {Text} from "../index";
 export const ListContent = ({image, title, link, date, content}) => {
     return image !== null && image !== undefined ? (
 
-        <Container>
-            <div className="columns is-desktop">
-                <div className="column is-one-quarter">
+        <div className={"my-4"}>
+
+                <div className="">
                     <Image3by2 src={image} alt={title}/>
                 </div>
                 <div className="column">
@@ -26,14 +26,14 @@ export const ListContent = ({image, title, link, date, content}) => {
                         <button className="button is-danger is-rounded is-small">See more</button>
                     </Link>
                 </div>
-                </div>
 
-            </Container>
+
+            </div>
 
 
     ) : (
 
-            <Container>
+            <div>
                 {date !== undefined && <Text.Date date={date}/>}
                 {title !== undefined && <HtmlProcessing htmlText={`<h5>${title}</h5>`}/>}
                 <Content className="content" >
@@ -45,18 +45,12 @@ export const ListContent = ({image, title, link, date, content}) => {
                 <Link link={link}>
                     <button className="button is-danger is-rounded is-small">See more</button>
                 </Link>
-            </Container>
+            </div>
 
     )
 }
 
-const Container = styled.div`
-  margin: 44px;
 
-  a:link {
-    color: black;
-  }
-`
 
 const Content = styled.div`
   line-height: 2em;
