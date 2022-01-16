@@ -25,11 +25,11 @@ export default {
                 // await actions.source.fetch(`/master_degree`)
                 // await actions.source.fetch(`/doctorate_degree`)
                 // await actions.source.fetch(`/about_us`)
-                //
-                // await actions.source.fetch(`/category/faculty-members`)
-                // await actions.source.fetch(`/category/administrative-staffs`)
-                // await actions.source.fetch(`/category/laboratory-staffs`)
-                //
+
+                await actions.source.fetch(`/category/faculty-members`)
+                await actions.source.fetch(`/category/administrative-staffs`)
+                await actions.source.fetch(`/category/laboratory-staffs`)
+
                 // await actions.source.fetch(`/form/senior_project_form`)
                 // await actions.source.fetch(`/form/internship_form`)
                 // await actions.source.fetch(`/form/thesis_master_form`)

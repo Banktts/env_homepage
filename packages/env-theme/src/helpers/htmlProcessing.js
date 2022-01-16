@@ -88,7 +88,7 @@ const HtmlProcessing = ({htmlText, filter}) => {
                         </div>
                     )
                 case  /h[1-6]/g.test(domNode?.name) :
-                    domNode.attribs.class = `title is-${domNode.name[1]} has-text-black`
+                    domNode.attribs.class = `title is-${domNode.name[1]} has-text-black` + domNode.attribs.class
                     break;
                 case domNode.attribs?.class?.includes("is-publication-table") === true :
                     return (<Publication val={domNode?.children[0]?.children[0]?.children}/>)

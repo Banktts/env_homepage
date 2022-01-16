@@ -17,6 +17,7 @@ const settings = {
             "state": {
                 "theme": {
                     "menu": [
+                        ["TABEE","/tabee"],
 
                         [
                             "People",
