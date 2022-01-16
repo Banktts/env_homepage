@@ -34,8 +34,8 @@ export const ListContent = ({image, title, link, date, content}) => {
     ) : (
 
             <div className={"my-4"}>
-                {date !== undefined || date !== null && <Text.Date date={date}/>}
-                {title !== undefined || title !== null && <HtmlProcessing htmlText={`<h5>${title}</h5>`}/>}
+                { date !== null && <Text.Date date={date}/>}
+                { title !== null && <HtmlProcessing htmlText={`<h5>${title}</h5>`}/>}
                 <Content className="content" >
 
                     {content !== undefined && <HtmlProcessing htmlText={content}/>}
