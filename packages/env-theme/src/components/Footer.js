@@ -81,7 +81,14 @@ const Footer = ({ state }) => {
                         </span>
                         <span />
                         <div>
-                            <text className="has-text-white">Department of Environmental Engineering,
+
+                            <text className="has-text-white">
+                                Tel : {state.theme.contactData.tel}
+                                <br/>
+                                Mail : {state.theme.contactData.mail}
+                                <br/>
+                                <br/>
+                                Department of Environmental Engineering,
                                 Faculty of Engineering, Chulalongkorn University
                                 Phayathai Rd., Wangmai Pratumwan, Bangkok 10330,
                                 THAILAND

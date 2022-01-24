@@ -6,9 +6,9 @@ const settings = {
     "name": "env-homepage",
     "state": {
         "Environmental Engineering": {
-            "url": "http://localhost:8000",
-            "title": "Test Frontity Blog",
-            "description": "WordPress installation for Frontity development"
+            "url": "http://www.env.eng.chula.ac.th",
+            "title": "ภาควิชาวิศวกรรมสิ่งแวดล้อม จุฬาลงกรณ์มหาวิทยาลัย",
+            "description": "ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330.. environmental.engcu@gmail.com.. +6622186667. "
         }
     },
     "packages": [
@@ -46,7 +46,11 @@ const settings = {
                             [
                                 "Thesis",
                                 "/thesis"
-                            ]
+                            ],
+                                [
+                                    "คำร้อง",
+                                    "https://docs.google.com/spreadsheets/d/1CHbHoloiHTYzfuqThMdx50lNCe97210lxugVIzX7nEU/edit#gid=0"
+                                ]
                             ]
                         ],
                         ["TABEE", "/tabee"],

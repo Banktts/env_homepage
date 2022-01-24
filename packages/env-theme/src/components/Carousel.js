@@ -50,7 +50,7 @@ const CarouselCard = ({ state, name, rawData, number, children, bulmaStyle, resp
 
         setIndex(val)
     }
-    console.log("content:",content)
+    // console.log("content:",content)
     return (
         <CarouselContainer>
             <Level leftChildren={<h3 className="title is-3">{name}</h3>}

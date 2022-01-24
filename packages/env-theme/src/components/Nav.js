@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {connect, styled} from "frontity";
 import Link from "@frontity/components/link";
-import {Icon} from "../static/icon";
 import {Logo} from "../static/image";
 
 

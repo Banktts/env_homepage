@@ -6,7 +6,7 @@ const CustomIcon = ({icon, content}) => {
                     {icon}
                 </div>
 
-                <div className="column is-11 m-3" >
+                <div className="column is-10 my-2" >
                     {content}
                 </div>
             </span>
