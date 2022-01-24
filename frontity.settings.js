@@ -117,7 +117,7 @@ const settings = {
             "name": "@frontity/wp-source",
             "state": {
                 "source": {
-                    "url": "http://192.168.0.244:8000"
+                    "url": process.env.URL
                 }
             }
         },
