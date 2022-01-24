@@ -13,19 +13,33 @@
   "scripts": {
     "dev": "frontity dev",
     "build": "frontity build",
-    "serve": "frontity serve"
+    "serve": "frontity serve --port 80",
+    "start": " frontity dev"
   },
   "prettier": {},
   "dependencies": {
+    "@fortawesome/fontawesome-free": "latest",
     "@frontity/core": "^1.14.3",
-    "@frontity/html2react": "^1.7.0",
-    "@frontity/tiny-router": "^1.4.4",
-    "@frontity/wp-source": "^1.11.6",
-    "bulma": "^0.9.3",
-    "bulma-carousel": "^4.0.24",
+    "@frontity/html2react": "^1.6.1",
+    "@frontity/tiny-router": "^1.3.2",
+    "@frontity/wp-source": "^1.11.1",
+    "bulma": "latest",
+    "dateformat": "^5.0.2",
+    "dotenv": "^11.0.0",
     "env-theme": "file:packages/env-theme",
-    "frontity": "^1.17.1",
-    "react": "^17.0.2",
-    "react-responsive": "^9.0.0-beta.4"
+    "frontity": "^1.14.1",
+    "html-react-parser": "^1.4.2",
+    "html-to-react": "^1.4.7",
+    "react": "latest",
+    "react-dom": "^17.0.2",
+    "react-responsive": "^9.0.0-beta.4",
+    "react-swipeable": "^6.2.0",
+    "react-swipeable-views": "^0.14.0"
+  },
+  "devDependencies": {
+    "@frontity/components": "latest"
+  },
+  "resolutions": {
+    "@frontity/core/webpack/watchpack": "^2.3.1"
   }
 }

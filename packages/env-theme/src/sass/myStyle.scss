@@ -6,6 +6,24 @@ $Kanit: 'Kanit', sans-serif;
 
 $danger: rgb(125,37,20);
 $title-color: rgb(172,23,28);
+$footer-background-color: rgb(125,37,20);
+$footer-color: true;
 $family-primary: $Kanit;
+$input-shadow: none;
+$input-border-color: none;
+$input-hover-color: none;
+$input-hover-border-color: none;
+$input-focus-color: none;
+$input-focus-border-color: none;
+$input-focus-box-shadow-color: none;
+$tabs-link-active-color: rgb(125,37,20);
+$tabs-link-active-border-bottom-color: rgb(125,37,20);
+$navbar-height: 6rem;
 
+$navbar-burger-color: white ;
+$navbar-item-hover-background-color: white ;
+$navbar-dropdown-item-hover-background-color: hsl(347, 90%, 96%) !important;
+$navbar-dropdown-item-hover-color: rgb(125,37,20) !important;
+$navbar-item-img-max-height: 5rem;
+$menu-item-hover-background-color: #671e10 !important;
 @import "../../../../node_modules/bulma/bulma.sass";

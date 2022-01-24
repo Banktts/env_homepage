@@ -1,64 +1,108 @@
-import React from "react";
-import {connect} from "frontity";
+import React, {useState} from "react";
+import {connect, styled} from "frontity";
+import Link from "@frontity/components/link";
+import {Logo} from "../static/image";
 
-const DropDown = ({name,link}) => {
-    return(
-        <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-item" key={name} >
-                {name}
-            </a>
-
-            <div className="navbar-dropdown" >
-                <a className="navbar-item is-active">
-                    Overview
-                </a>
-                <a className="navbar-item has-text-black">
-                    Elements
-                </a>
-                <a className="navbar-item has-text-black">
-                    Components
-                </a>
-
-            </div>
-        </div>
-    )
-}
 
 const Nav = ({state}) => {
-    console.log("Nav", state.router.link)
+    const [burgerBar, setBurgerBar] = useState("")
+
+
+    const DropDown = ({name, link}) => {
+        return (
+            <div className="navbar-item has-dropdown is-hoverable has-shadow">
+                <p className="navbar-item" key={name}>
+                    {name}
+                </p>
+
+                <div className="navbar-dropdown">
+                    {link.map(([name, link]) => {
+                        return (
+                            <div>
+                                <Link link={link} onClick={handleBurger} className="navbar-item has-text-white is-hidden-desktop"
+                                      key={`navbar-dropdown-item-${name}`}>
+                                    {name}
+                                </Link>
+
+                                <Link link={link} className="navbar-item has-text-black is-hidden-touch"
+                                      key={`navbar-dropdown-item-${name}`}>
+                                    {name}
+                                </Link>
+
+
+                            </div>
+
+                        );
+                    })}
+                </div>
+            </div>
+        )
+    }
+
+
+
+    const NavItem = ({name, link}) => {
+        if (!Array.isArray(link)) {
+            return (
+                <Link link={link} onClick={handleBurger} className="navbar-item" key={`navbar-item-${name}`}>
+                    {name}
+                </Link>
+            )
+        } else {
+            return (
+                <DropDown name={name} link={link}/>
+            );
+
+        }
+    }
+
+    const handleBurger = () => {
+        if (burgerBar == "") {
+            setBurgerBar("is-active")
+        } else {
+            setBurgerBar("")
+        }
+
+    }
     return (
         <nav className="navbar">
             <div className="container">
                 <div className="navbar-brand">
+
                     <a className="navbar-item">
-                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo"/>
+                        <Link link="/">
+                            <div className="is-flex is-flex-direction-row mx-4">
+
+
+                                    <Logo/>
+
+
+                                <div className="my-5 mx-2 is-hidden-mobile">
+                                    <p>Department of Environmental Engineering</p>
+                                    <p>Faculty of Engineering, Chulalongkorn University</p>
+                                </div>
+                            </div>
+
+                        </Link>
+
                     </a>
-                    <span className="navbar-burger" data-target="navbarMenuHeroA">
+
+
+                    <span className={"navbar-burger " + burgerBar} data-target="navbarMenu" onClick={handleBurger}>
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
                 </div>
-                <div id="navbarMenuHeroA" className="navbar-menu">
+                <div id="navbarMenu" className={"navbar-menu " + burgerBar}>
                     <div className="navbar-end">
 
                         {state.theme.menu.map(([name, link]) => {
-                            // Check if the link matched the current page url
-                            const isCurrentPage = state.router.link === link;
                             return (
-                                <DropDown name={name}/>
+                                <NavItem key={`navbar-list-${name}`} name={name} link={link}/>
 
                             );
                         })}
-                        <span className="navbar-item">
-                            <a className="button is-primary is-inverted">
-                                <span className="icon">
-                                    <i className="fab fa-github"></i>
-                                </span>
-                                <span>Download</span>
-                            </a>
-                        </span>
-
                     </div>
                 </div>
             </div>
