@@ -70,7 +70,7 @@ const Nav = ({state}) => {
                 <div className="navbar-brand">
 
                     <a className="navbar-item">
-                        <Link link="/">
+                        <Link link="/" onClick={handleBurger}>
                             <div className="is-flex is-flex-direction-row mx-4">
 
 
