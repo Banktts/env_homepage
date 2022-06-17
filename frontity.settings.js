@@ -8,7 +8,7 @@ const settings = {
         "Environmental Engineering": {
             "url": "http://www.env.eng.chula.ac.th",
             "title": "ภาควิชาวิศวกรรมสิ่งแวดล้อม จุฬาลงกรณ์มหาวิทยาลัย",
-            "description": "ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330.. environmental.engcu@gmail.com.. +6622186667. "
+            "description": "ถนนพญาไท แขวงวังใหม่ เขตปทุมวัน กรุงเทพฯ 10330.. environmental.engcu@gmail.com.. +6622187903. "
         }
     },
     "packages": [
@@ -103,7 +103,7 @@ const settings = {
                         }
                     },
                     "contactData": {
-                        "tel": "+6622186667",
+                        "tel": "+6622187903",
                         "mail": "environmental.engcu@gmail.com",
                         "facebook": "https://www.facebook.com/EngEnviChula"
 
@@ -117,7 +117,7 @@ const settings = {
             "name": "@frontity/wp-source",
             "state": {
                 "source": {
-                    "url": process.env.URL
+                    "url": "http://env.eng.chula.ac.th:8000"
                 }
             }
         },
