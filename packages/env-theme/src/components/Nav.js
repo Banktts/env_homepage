@@ -78,7 +78,7 @@ const Nav = ({state}) => {
 
 
                                 <div className="my-5 mx-2 is-hidden-mobile">
-                                    <p>Department of Environmental Engineering</p>
+                                    <p>xxx</p>
                                     <p>xxx</p>
                                 </div>
                             </div>
