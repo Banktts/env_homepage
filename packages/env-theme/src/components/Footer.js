@@ -88,10 +88,7 @@ const Footer = ({ state }) => {
                                 Mail : {state.theme.contactData.mail}
                                 <br/>
                                 <br/>
-                                Department of Environmental Engineering,
-                                Faculty of Engineering, Chulalongkorn University
-                                Phayathai Rd., Wangmai Pratumwan, Bangkok 10330,
-                                THAILAND
+                                xxx
 
 
                             </text>
